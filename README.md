@@ -497,8 +497,6 @@ Model 3: GRU4Rec (Datasets: MovieLENS100-K, MovieLENS1M and MovieLENS20M)
 
 Evaluation Results and Predictions:
 
-![image](https://github.com/user-attachments/assets/5efd7700-083e-4dfc-a73d-576a17de20a4)
-
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
