@@ -1,5 +1,5 @@
 
-**Research Topic:** xLSTM Architecture's For Recommendations
+**Research Topic:** xLSTM Architecture's For Recommendations [Streaming Applications]
 
 This script trains a sequential recommender system on a **user-specified/customizable MovieLens dataset** (100K, 1M, 10M, or 20M).
 
