@@ -418,6 +418,13 @@ Step 23: This pipeline can be repeated for other users, continuously learning pa
 	• When to use: Triton in real-time systems or batch decoding tasks.
 
 
+**To accelarate GPU Training Process:**
+**1. AMP (Automatic Mixed Precision)**: It's a feature in PyTorch that enables training using a mix of:
+		float16 (FP16) — faster, uses less memory
+		float32 (FP32) — for stable parts of the model
+
+
+
 **Training Objective + Optimizer + Scheduler Breakdown at a glance**
 
 Step 1: criterion = nn.CrossEntropyLoss()
