@@ -58,7 +58,7 @@ B. Triton Activation For GPU Acceleration (To make sure Triton and GPU Accerlera
 
 C. Select the necessary model and datasets (Model)
 
-D. Run all would work, to change the model and datasets, please adjust the variable in the main script.
+D. Run all would work, to change the model and datasets, adjust the variable in the main script.
 
 E. Script is mainly desinged for Colab Environment, for A100 GPU. Single click solution.
 
