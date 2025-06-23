@@ -62,6 +62,31 @@ D. Run all would work, to change the model and datasets, adjust the variable in 
 
 E. Script is mainly desinged for Colab Environment, for A100 GPU. Single click solution.
 
+**Methodology**
+
+**Experimental Setup::**
+1. Datasets: MovieLens (100K, 1M, 10M, Steam)
+
+2. Models Evaluated: xLSTM, BERT4Rec, SASRec
+
+3. Custom configs for each dataset/model
+
+4. Configuration: Custom hyperparameters tuned for each dataset-model combination
+
+**Systems Features:**
+
+1. GPU-accelerated training (NVIDIA A100, Triton-backed kernels for xLSTM), Comprehensive TensorBoard Logging.
+
+2. Early stopping (patience = 3 epochs) with best model checkpointing
+
+3. Real-time Top-K recommendation outputs with movie title
+
+**Training Workflow:**
+1. User and Item ID remapping for compact indexing
+2. Temporal sequence splitting (Train/Validation/Test) 
+3. Random seeds applied (42, 123, 2023) to ensure statistical reproducibility 
+4. Early stopping triggered based on Recall@10 Improvments
+
 
 **Requirements:**
 mlstm_kernels: 2.0.0
