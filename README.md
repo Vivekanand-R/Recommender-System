@@ -74,9 +74,24 @@ torchaudio: 2.7.1
 
 **Folder: Runs** (Contains all the recent Run History with 8 different performance attributes (Recall, Hit Rate, GPU Performance, Epoch Run Time, Total Parameters etc.)
 
+**Model Results:**
+
+![image](https://github.com/user-attachments/assets/aa450182-e2dc-421e-81d2-c57633b14f18)
+
+**Conclusion from Results:**
+
+A. xLSTM evaluated under a novel configuration for Sequencial recommenders; observed performance on various conditions.
+
+B. Performance Scaling (RQ1): xLSTM matches BERT4Rec's Recall@10 (~26-27%) on the 1M dataset, indicating scalability with richer interaction histories. Performance converges  as dataset size grows.
+
+C. Sequence Sensitivity (RQ2): Standard deviation increases with sequence length, underscoring sensitivity to input length variations.
+
+D. Trade-offs (RQ3): xLSTM achieves competitive accuracy on large datasets but incurs higher computational costs, especially in smaller-scale scenarios.
+
+
 ---------------------------------------
 
-# Recommender Systems: 
+# Recommender Systems: (In Detail)
 
 Audio Podcast Version: https://www.dropbox.com/scl/fi/zv511ysp0ecdaqbo9nskp/Recommender-Systems_-Architectures-Applications-and-Market-Analysis.wav?rlkey=3u9za3bbogvc0506ubxohxe2w&st=gy3ekapc&dl=0
 
