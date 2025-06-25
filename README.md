@@ -50,6 +50,19 @@ H. Easy-readable prediction logging with movie titles
 8. Ablation Logging: How much performance drop occurs when certain features are turned off?
 
 
+**Model Architecture:** 
+
+xLSTM:
+
+![image](https://github.com/user-attachments/assets/d442320b-f9a9-414a-87e6-e46a3f920e94)
+
+
+Bert4REc:
+
+![image](https://github.com/user-attachments/assets/417bf606-ef16-4466-974d-1424dea438e7)
+
+
+
 **Initial Setup Requirements**
 
 A. Install Necessary Packages (in quite mode)
@@ -94,6 +107,12 @@ xlstm: 2.0.4
 torch: 2.7.1
 torchvision: 0.22.1
 torchaudio: 2.7.1
+
+
+**Hyperparameters**: (For 100-K)
+
+![image](https://github.com/user-attachments/assets/6c812c33-c662-4669-98cc-f63cf4055bc1)
+
 
 **Folder: Best Models** ( Contains best model for inferencing, v4 is latest)
 
@@ -168,6 +187,8 @@ List of Different Varieties of Datasets: (Ref: https://recbole.io/)
       A. Each movie ID is converted into embedding vectors.
       B. Self-attention mechanism understands contextual relationships between movies.
       C. Outputs a dense layer that predicts probabilities for all possible movies.
+
+![image](https://github.com/user-attachments/assets/64fbe331-7fec-4787-84d5-dbfd55f9ba95)
 
 **Making Predictions:**
 During inference:
