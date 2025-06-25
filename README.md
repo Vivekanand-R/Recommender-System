@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/f5c3bd55-2c38-4892-862a-34391c47ff01)![image](https://github.com/user-attachments/assets/f5c3bd55-2c38-4892-862a-34391c47ff01)
+
 **Research Topic:** xLSTM Architecture's For Recommendations [Streaming Applications]
 
 This script trains a sequential recommender system on a **user-specified/customizable MovieLens dataset** (100K, 1M, 10M, or 20M).
