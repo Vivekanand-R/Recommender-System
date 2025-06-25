@@ -1,4 +1,4 @@
-
+![image](https://github.com/user-attachments/assets/f5c3bd55-2c38-4892-862a-34391c47ff01)![image](https://github.com/user-attachments/assets/f5c3bd55-2c38-4892-862a-34391c47ff01)
 **Research Topic:** xLSTM Architecture's For Recommendations [Streaming Applications]
 
 This script trains a sequential recommender system on a **user-specified/customizable MovieLens dataset** (100K, 1M, 10M, or 20M).
@@ -48,19 +48,6 @@ H. Easy-readable prediction logging with movie titles
 7. Token Usage Heatmap: Where in the sequence is the model focusing? More recent items or early ones?
 
 8. Ablation Logging: How much performance drop occurs when certain features are turned off?
-
-
-**Model Architecture:** 
-
-xLSTM:
-
-![image](https://github.com/user-attachments/assets/d442320b-f9a9-414a-87e6-e46a3f920e94)
-
-
-Bert4REc:
-
-![image](https://github.com/user-attachments/assets/417bf606-ef16-4466-974d-1424dea438e7)
-
 
 
 **Initial Setup Requirements**
@@ -272,6 +259,15 @@ Model 2: xLSTM (Datasets: MovieLENS100-K, MovieLENS1M and MovieLENS20M)
 Section 1: Model Parameters:
 
 ![image](https://github.com/user-attachments/assets/6b456f6f-c137-4782-a333-6a76fd5b0d58)
+
+![image](https://github.com/user-attachments/assets/10382bb0-d290-4994-a9f3-2906e38f19d8)
+
+**Model Architecture:** 
+
+xLSTM:
+
+![image](https://github.com/user-attachments/assets/d442320b-f9a9-414a-87e6-e46a3f920e94)
+
 
 Section 2: Flow Chart:
 
