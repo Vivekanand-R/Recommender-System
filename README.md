@@ -96,10 +96,9 @@ torchvision: 0.22.1
 torchaudio: 2.7.1
 
 
-**Hyperparameters**: (For 100-K)
+**Parameters**:
 
-![image](https://github.com/user-attachments/assets/6c812c33-c662-4669-98cc-f63cf4055bc1)
-
+![image](https://github.com/user-attachments/assets/de0a6173-3172-44c6-88ed-f8fd4b403a1a)
 
 **Folder: Best Models** ( Contains best model for inferencing, v4 is latest)
 
