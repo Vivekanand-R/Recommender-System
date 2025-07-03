@@ -529,7 +529,7 @@ Step 3: scheduler = StepLR(optimizer, step_size=5, gamma=0.5)
 		○ MovieLens 20M → OneCycleLR for faster training with controlled generalization
 
 Step 4: recall_list, mrr_list, ndcg_list = [], [], []
-	• What it does: Initializes lists to store evaluation metrics per epoch for validation and test sets.
+	• What it does: Initializes lists to store evaluation metrics per epoch for validation and test sets..
 	• Why: Tracking Recall@K, MRR@K, and NDCG@K helps monitor ranking quality and ensure model performance is improving.
 	• How it works:
 		○ After each epoch, predictions are collected.
@@ -583,7 +583,7 @@ Model 5: BERT4REC (Steam Datasets)
 
 Four Classifications: 
 
-1. General Recommendation (GR): Netflix use case which we discussed above. The interaction of users and items is the only data that can be used by model. Trained on implicit feedback data and evaluated using top-n recommendation. Collaborative filter (CF) based models are classified here. 
+1. General Recommendation (GR): Netflix use case which discussed above. The interaction of users and items is the only data that can be used by model. Trained on implicit feedback data and evaluated using top-n recommendation. Collaborative filter (CF) based models are classified here. 
 
 2. Content-aware Recommendation: Amazon use case. Click-through rate prediction, CTR prediction. The dataset is explicit and contains label field. Evaluation conducted by binary classification.
 
