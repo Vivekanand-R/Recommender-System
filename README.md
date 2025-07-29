@@ -119,6 +119,11 @@ C. Sequence Sensitivity (RQ2): Standard deviation increases with sequence length
 D. Trade-offs (RQ3): xLSTM achieves competitive accuracy on large datasets but incurs higher computational costs, especially in smaller-scale scenarios.
 
 
+Data Flow (AT High Level)
+
+<img width="660" height="838" alt="image" src="https://github.com/user-attachments/assets/6bf85359-c8ed-400d-99ab-7fd04e323cdc" />
+
+
 ---------------------------------------
 
 # Recommender Systems: (In Detail)
