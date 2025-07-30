@@ -171,10 +171,7 @@ List of Different Varieties of Datasets: (Ref: https://recbole.io/)
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
-**Model 1: Bert4Rec** Datasets: MovieLENS (100-K)
-
-**Sample Input Datasets:**
-![image](https://github.com/user-attachments/assets/9a728e92-2d62-4f6e-b2cd-96080a482eb1)
+**Model 1: Bert4Rec** Datasets: MovieLENS
 
 **Model Architecture:**
 1. The model is a modified version of BERT (Bidirectional Encoder Representations from Transformers).
@@ -545,10 +542,9 @@ Step 4: recall_list, mrr_list, ndcg_list = [], [], []
 	• Alternatives:
 		○ Store in a dict or log with wandb, TensorBoard, etc.
 
-Section 3: Evaluation Results and Predictions for MovieLENS1M
+Section 3: Evaluation Results and Predictions for MovieLENS10M:
 
-![image](https://github.com/user-attachments/assets/16a6f021-e193-46ec-a8a3-a1c59828759a)
-
+<img width="1275" height="317" alt="image" src="https://github.com/user-attachments/assets/fc9064dc-3a23-4def-9026-bb60d411be3b" />
 
 
 **Which movies dominate the top-10 predictions across the test set?**
