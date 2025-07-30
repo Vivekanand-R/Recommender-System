@@ -12,6 +12,11 @@ The selected model is trained using PyTorch with evaluation metrics like Recall@
 After training, the best model is used to predict and display top-10 movie recommendations based on user history.
 
 
+**Data Flow Pipeline**
+
+<img width="1013" height="767" alt="image" src="https://github.com/user-attachments/assets/ad9043b6-06a0-4398-8754-796d0f5e2b94" />
+
+
 **Training script that integrates:**
 
 A. Dynamic dataset selection (100K, 1M, 10M, 20M)
@@ -118,11 +123,11 @@ C. Sequence Sensitivity (RQ2): Standard deviation increases with sequence length
 
 D. Trade-offs (RQ3): xLSTM achieves competitive accuracy on large datasets but incurs higher computational costs, especially in smaller-scale scenarios.
 
+---------------------------------------
 
-Data Flow (AT High Level)
+**Data Flow (At High Level)**
 
 <img width="660" height="838" alt="image" src="https://github.com/user-attachments/assets/6bf85359-c8ed-400d-99ab-7fd04e323cdc" />
-
 
 ---------------------------------------
 
@@ -165,10 +170,6 @@ List of Different Varieties of Datasets: (Ref: https://recbole.io/)
 ![image](https://github.com/user-attachments/assets/e842adf0-6eaa-48b7-9ffa-68312db0788e)
 
 -------------------------------------------------------------------------------------------------------------------------------------
-
-<img width="1013" height="767" alt="image" src="https://github.com/user-attachments/assets/dcef7f4c-0f4c-4c8a-8c8c-69f4ca3fc5af" />
-
-
 
 **Model 1: Bert4Rec** Datasets: MovieLENS (100-K)
 
