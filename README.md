@@ -166,6 +166,9 @@ List of Different Varieties of Datasets: (Ref: https://recbole.io/)
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
+<img width="1013" height="767" alt="image" src="https://github.com/user-attachments/assets/dcef7f4c-0f4c-4c8a-8c8c-69f4ca3fc5af" />
+
+
 
 **Model 1: Bert4Rec** Datasets: MovieLENS (100-K)
 
