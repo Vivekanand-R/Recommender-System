@@ -557,6 +557,30 @@ To understand:
 
 ![image](https://github.com/user-attachments/assets/0e1b8ee2-b545-4c2c-bd0d-add90319c722)
 
+**Method 1: **
+
+Asymmetric Multi-instance Noise Contrastive Estimation (AMINCE) loss that generates asymmetric positive and negative samples by balancing popular and non-popular items. ?
+
+AMINCE loss is a 2025 innovation tailored to address popularity bias in sequential recommendation by modifying the classic contrastive learning setup. It extends InfoNCE contrastive loss by generating asymmetric sets of positives and negatives:
+
+Positive samples: Long-tail items (under-represented), Negative samples: Popular items (over-represented)
+
+This inverts the typical bias in training data, where popular items dominate both positive and negative sets. In conventional contrastive learning, positive samples often come from augmentations of popular items. That reinforces bias — the model learns to pull representations toward popular items.
+
+Re-balances popularity by: Favoring non-popular items as positives, Including more popular items as negatives
+
+This makes the model less reliant on popularity signals and more attentive to intrinsic item patterns.
+
+<img width="676" height="337" alt="image" src="https://github.com/user-attachments/assets/fd824327-7992-4827-9347-6efb9d521a8d" />
+
+<img width="532" height="342" alt="image" src="https://github.com/user-attachments/assets/8b921844-0d65-4f37-8561-182c31813bf4" />
+
+TCA4Rec (2025): Contrastive Learning with Popularity‑Aware Asymmetric Augmentation: This framework introduces a two-stage training strategy plus a novel Asymmetric Multi-instance Contrastive Estimation (AMINCE) loss to explicitly mitigate popularity bias in sequence models. It leverages a memory module and cleverly balances popular vs. long-tail items to improve robustness on sparse data.
+
+MABSRec (2025): Multi-Perspective Attention-Based Bias-Aware Sequential Recommendation: It targets the Matthew Effect (popularity reinforcing popularity) and aims to diversify recommendations by re-weighting long-tail items in the attention mechanism.
+
+Datasets: Can be used: The Amazon Sports dataset is a dataset for the Amazon Outdoor Sports product segment, similar to the Amazon Beauty dataset, which also contains user purchase and review information. [https://arxiv.org/html/2504.05323v1]
+
 
 -------------------------------------------------------------------------------------------------------------------------------------
 Model 3: GRU4Rec (Datasets: MovieLENS100-K, MovieLENS1M and MovieLENS20M)
