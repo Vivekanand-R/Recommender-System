@@ -571,6 +571,12 @@ Re-balances popularity by: Favoring non-popular items as positives, Including mo
 
 This makes the model less reliant on popularity signals and more attentive to intrinsic item patterns.
 
+Instead of treating all samples equally (as InfoNCE does), AMINCE:
+		
+		A. Gives more weight to more informative pairs.
+		B. Tries to dampen the influence of noisy or uninformative negatives.
+		C. Adapts the contrastive loss to focus learning where it matters most.
+
 <img width="676" height="337" alt="image" src="https://github.com/user-attachments/assets/fd824327-7992-4827-9347-6efb9d521a8d" />
 
 <img width="532" height="342" alt="image" src="https://github.com/user-attachments/assets/8b921844-0d65-4f37-8561-182c31813bf4" />
