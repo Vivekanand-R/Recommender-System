@@ -585,14 +585,9 @@ Datasets: Can be used: The Amazon Sports dataset is a dataset for the Amazon Out
 -------------------------------------------------------------------------------------------------------------------------------------
 Model 3: GRU4Rec (Datasets: MovieLENS100-K, MovieLENS1M and MovieLENS20M)
 
-Evaluation Results and Predictions:
-
-
 --------------------------------------------------------------------------------------------------------------------------------------
 
 Model 4: SAS4Rec (Datasets: MovieLENS100-K, MovieLENS1M and MovieLENS20M)
-
-Evaluation Results and Predictions:
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
@@ -630,11 +625,6 @@ SEO (Search Engine Optimization) and SEM techniques may also be merged, along wi
 6. Healthcare and Pharmaceutical, 
 7. Aviation and Transportation, and 
 8. Other Specialized Sectors. 
-
-**Few Other Hugging Face models to be tested:**
-1. Transformers4Rec by NVIDIA: Integrates with Hugging Face Transformers, enabling the application of transformer architectures to sequential and session-based recommendation tasks.
-
-2. RecGPT: RecGPT is a domain-adapted large language model specifically trained for text-based recommendation tasks.
 
 **References:**
 
