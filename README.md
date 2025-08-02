@@ -559,9 +559,9 @@ To understand:
 
 **Method 1: **
 
-Asymmetric Multi-instance Noise Contrastive Estimation (AMINCE) loss that generates asymmetric positive and negative samples by balancing popular and non-popular items. ?
+Asymmetric Multi-instance Noise Contrastive Estimation (AMINCE) loss that generates asymmetric positive and negative samples by balancing popular and non-popular items.
 
-AMINCE loss is a 2025 innovation tailored to address popularity bias in sequential recommendation by modifying the classic contrastive learning setup. It extends InfoNCE contrastive loss by generating asymmetric sets of positives and negatives:
+AMINCE loss is a 2025 tailored to address popularity bias in sequential recommendation by modifying the classic contrastive learning setup. It extends InfoNCE contrastive loss by generating asymmetric sets of positives and negatives:
 
 Positive samples: Long-tail items (under-represented), Negative samples: Popular items (over-represented)
 
