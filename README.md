@@ -557,6 +557,10 @@ To understand:
 
 ![image](https://github.com/user-attachments/assets/0e1b8ee2-b545-4c2c-bd0d-add90319c722)
 
+<img width="796" height="550" alt="image" src="https://github.com/user-attachments/assets/7b485c09-559c-42d2-aa8a-877763082e49" />
+
+100K: Models are strong on head (popular) items but underperform on long-tail (diverse) items. For recommendation systems, this can mean: Poor personalization, Repetition of already-known items, Missed opportunities in user engagement.
+
 **Method 1: Asymmetric Multi-instance Noise Contrastive Estimation (AMINCE) loss** that generates asymmetric positive and negative samples by balancing popular and non-popular items.
 
 AMINCE loss is a 2025 tailored to address popularity bias in sequential recommendation by modifying the classic contrastive learning setup. It extends InfoNCE contrastive loss by generating asymmetric sets of positives and negatives:
