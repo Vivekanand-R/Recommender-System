@@ -557,9 +557,7 @@ To understand:
 
 ![image](https://github.com/user-attachments/assets/0e1b8ee2-b545-4c2c-bd0d-add90319c722)
 
-**Method 1: **
-
-Asymmetric Multi-instance Noise Contrastive Estimation (AMINCE) loss that generates asymmetric positive and negative samples by balancing popular and non-popular items.
+**Method 1: Asymmetric Multi-instance Noise Contrastive Estimation (AMINCE) loss** that generates asymmetric positive and negative samples by balancing popular and non-popular items.
 
 AMINCE loss is a 2025 tailored to address popularity bias in sequential recommendation by modifying the classic contrastive learning setup. It extends InfoNCE contrastive loss by generating asymmetric sets of positives and negatives:
 
@@ -576,6 +574,20 @@ Instead of treating all samples equally (as InfoNCE does), AMINCE:
 		A. Gives more weight to more informative pairs.
 		B. Tries to dampen the influence of noisy or uninformative negatives.
 		C. Adapts the contrastive loss to focus learning where it matters most.
+
+In MovieLens:
+Some movies (like blockbusters) are very frequent → popular items.
+
+Niche indie movies are less frequent.
+
+While building a sequential recommender:
+		A. AMINCE prevents the model from always recommending popular movies.
+		B. Encourages discovery of less-known (but relevant) items based on user behavior.
+
+For example:
+		A. User watches ["Inception", "The Matrix", "Blade Runner"]
+		B. Traditional methods might push "Avengers" due to popularity.
+		C. AMINCE would weigh popularity and emphasize sci-fi patterns, pushing items like "Ex Machina" instead.
 
 <img width="676" height="337" alt="image" src="https://github.com/user-attachments/assets/fd824327-7992-4827-9347-6efb9d521a8d" />
 
