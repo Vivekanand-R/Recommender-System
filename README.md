@@ -671,6 +671,9 @@ SEO (Search Engine Optimization) and SEM techniques may also be merged, along wi
 7. Aviation and Transportation, and 
 8. Other Specialized Sectors. 
 
+<img width="866" height="802" alt="image" src="https://github.com/user-attachments/assets/209ce517-b66f-473b-94f9-7d6e9a569420" />
+
+
 **References:**
 
 [1] xLSTM: Extended Long Short-Term Memory: https://arxiv.org/pdf/2405.04517
