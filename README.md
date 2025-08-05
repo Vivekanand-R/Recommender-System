@@ -112,8 +112,6 @@ torchaudio: 2.7.1
 
 **Model Results:**
 
-![image](https://github.com/user-attachments/assets/aa450182-e2dc-421e-81d2-c57633b14f18)
-
 <img width="811" height="562" alt="image" src="https://github.com/user-attachments/assets/2ced07c9-dfa2-40f6-ba76-1d003a190a99" />
 
 
@@ -670,8 +668,6 @@ SEO (Search Engine Optimization) and SEM techniques may also be merged, along wi
 6. Healthcare and Pharmaceutical, 
 7. Aviation and Transportation, and 
 8. Other Specialized Sectors. 
-
-<img width="866" height="802" alt="image" src="https://github.com/user-attachments/assets/209ce517-b66f-473b-94f9-7d6e9a569420" />
 
 
 **References:**
