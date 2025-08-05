@@ -100,6 +100,7 @@ torch: 2.7.1
 torchvision: 0.22.1
 torchaudio: 2.7.1
 
+**Total Training Hours**: 200 Hours (A100 GPU - 84 Experiments)
 
 **Parameters**:
 
