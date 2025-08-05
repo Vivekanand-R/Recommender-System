@@ -126,6 +126,7 @@ C. Sequence Sensitivity (RQ2): Standard deviation increases with sequence length
 D. Trade-offs (RQ3): xLSTM achieves competitive accuracy on large datasets but incurs higher computational costs, especially in smaller-scale scenarios.
 
 **E. From 10M Datasets:**
+
 	🔸 xLSTM: 
  	Dominates all three major metrics — this model is clearly the best choice.
 	For longer sequences (e.g., 128+), xLSTM maintains advantage over transformer-based models.
