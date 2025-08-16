@@ -12,6 +12,11 @@ The selected model is trained using PyTorch with evaluation metrics like Recall@
 After training, the best model is used to predict and display top-10 movie recommendations based on user history.
 
 
+**Data Flow Pipeline**
+
+<img width="1013" height="767" alt="image" src="https://github.com/user-attachments/assets/ad9043b6-06a0-4398-8754-796d0f5e2b94" />
+
+
 **Training script that integrates:**
 
 A. Dynamic dataset selection (100K, 1M, 10M, 20M)
@@ -62,6 +67,31 @@ D. Run all would work, to change the model and datasets, adjust the variable in 
 
 E. Script is mainly desinged for Colab Environment, for A100 GPU. Single click solution.
 
+**Methodology**
+
+**Experimental Setup::**
+1. Datasets: MovieLens (100K, 1M, 10M, Steam)
+
+2. Models Evaluated: xLSTM, BERT4Rec, SASRec
+
+3. Custom configs for each dataset/model
+
+4. Configuration: Custom hyperparameters tuned for each dataset-model combination
+
+**Systems Features:**
+
+1. GPU-accelerated training (NVIDIA A100, Triton-backed kernels for xLSTM), Comprehensive TensorBoard Logging.
+
+2. Early stopping (patience = 3 epochs) with best model checkpointing
+
+3. Real-time Top-K recommendation outputs with movie title
+
+**Training Workflow:**
+1. User and Item ID remapping for compact indexing
+2. Temporal sequence splitting (Train/Validation/Test) 
+3. Random seeds applied (42, 123, 2023) to ensure statistical reproducibility 
+4. Early stopping triggered based on Recall@10 Improvments
+
 
 **Requirements:**
 mlstm_kernels: 2.0.0
@@ -70,13 +100,60 @@ torch: 2.7.1
 torchvision: 0.22.1
 torchaudio: 2.7.1
 
+**Total Training Hours**: 200 Hours (A100 GPU - 84 Experiments)
+
+**Parameters**:
+
+![image](https://github.com/user-attachments/assets/de0a6173-3172-44c6-88ed-f8fd4b403a1a)
+
 **Folder: Best Models** ( Contains best model for inferencing, v4 is latest)
 
 **Folder: Runs** (Contains all the recent Run History with 8 different performance attributes (Recall, Hit Rate, GPU Performance, Epoch Run Time, Total Parameters etc.)
 
+**Model Results:**
+
+<img width="811" height="562" alt="image" src="https://github.com/user-attachments/assets/2ced07c9-dfa2-40f6-ba76-1d003a190a99" />
+
+
+**Conclusion from Final Results:**
+
+A. xLSTM evaluated under a novel configuration for Sequencial recommenders; observed performance on various conditions.
+
+B. Performance Scaling (RQ1): xLSTM matches BERT4Rec's Recall@10 (~26-27%) on the 1M dataset, indicating scalability with richer interaction histories. Performance converges  as dataset size grows.
+
+C. Sequence Sensitivity (RQ2): Standard deviation increases with sequence length, underscoring sensitivity to input length variations.
+
+D. Trade-offs (RQ3): xLSTM achieves competitive accuracy on large datasets but incurs higher computational costs, especially in smaller-scale scenarios.
+
+**E. From 10M Datasets:**
+
+	🔸 xLSTM: 
+ 	Dominates all three major metrics — this model is clearly the best choice.
+	For longer sequences (e.g., 128+), xLSTM maintains advantage over transformer-based models.
+	Performs well at all sequence lengths, Slightly best at 64, but stable performance overall
+
+	🔸 BERT4Rec:
+	In 10M datasets, Solid performance, but consistently lower than xLSTM. 
+	Shows a performance dip at Seq Len = 64:
+	Recall@10 drops to 0.2744 (vs. 0.3112 and 0.3171 at 32 and 128)
+	Best at Seq Len = 128, but still behind xLSTM
+	
+	🔸 SAS4Rec:
+	Performance drops drastically as sequence length increases:
+	Recall@10 drops from 0.2143 → 0.1271 → 0.0727
+	This trend suggests SAS4Rec is not able to capture long-term dependencies effectively
+	Also shows lower parameter count, but at a cost of worse accuracy
+
+
 ---------------------------------------
 
-# Recommender Systems: 
+**Data Flow (At High Level)**
+
+<img width="660" height="838" alt="image" src="https://github.com/user-attachments/assets/6bf85359-c8ed-400d-99ab-7fd04e323cdc" />
+
+---------------------------------------
+
+# Recommender Systems: (In Detail)
 
 Audio Podcast Version: https://www.dropbox.com/scl/fi/zv511ysp0ecdaqbo9nskp/Recommender-Systems_-Architectures-Applications-and-Market-Analysis.wav?rlkey=3u9za3bbogvc0506ubxohxe2w&st=gy3ekapc&dl=0
 
@@ -116,11 +193,7 @@ List of Different Varieties of Datasets: (Ref: https://recbole.io/)
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
-
-**Model 1: Bert4Rec** Datasets: MovieLENS (100-K)
-
-**Sample Input Datasets:**
-![image](https://github.com/user-attachments/assets/9a728e92-2d62-4f6e-b2cd-96080a482eb1)
+**Model 1: Bert4Rec** Datasets: MovieLENS
 
 **Model Architecture:**
 1. The model is a modified version of BERT (Bidirectional Encoder Representations from Transformers).
@@ -128,6 +201,8 @@ List of Different Varieties of Datasets: (Ref: https://recbole.io/)
       A. Each movie ID is converted into embedding vectors.
       B. Self-attention mechanism understands contextual relationships between movies.
       C. Outputs a dense layer that predicts probabilities for all possible movies.
+
+![image](https://github.com/user-attachments/assets/64fbe331-7fec-4787-84d5-dbfd55f9ba95)
 
 **Making Predictions:**
 During inference:
@@ -211,6 +286,15 @@ Model 2: xLSTM (Datasets: MovieLENS100-K, MovieLENS1M and MovieLENS20M)
 Section 1: Model Parameters:
 
 ![image](https://github.com/user-attachments/assets/6b456f6f-c137-4782-a333-6a76fd5b0d58)
+
+![image](https://github.com/user-attachments/assets/10382bb0-d290-4994-a9f3-2906e38f19d8)
+
+**Model Architecture:** 
+
+xLSTM:
+
+![image](https://github.com/user-attachments/assets/d442320b-f9a9-414a-87e6-e46a3f920e94)
+
 
 Section 2: Flow Chart:
 
@@ -472,7 +556,7 @@ Step 3: scheduler = StepLR(optimizer, step_size=5, gamma=0.5)
 		○ MovieLens 20M → OneCycleLR for faster training with controlled generalization
 
 Step 4: recall_list, mrr_list, ndcg_list = [], [], []
-	• What it does: Initializes lists to store evaluation metrics per epoch for validation and test sets.
+	• What it does: Initializes lists to store evaluation metrics per epoch for validation and test sets..
 	• Why: Tracking Recall@K, MRR@K, and NDCG@K helps monitor ranking quality and ensure model performance is improving.
 	• How it works:
 		○ After each epoch, predictions are collected.
@@ -480,10 +564,9 @@ Step 4: recall_list, mrr_list, ndcg_list = [], [], []
 	• Alternatives:
 		○ Store in a dict or log with wandb, TensorBoard, etc.
 
-Section 3: Evaluation Results and Predictions for MovieLENS1M
+Section 3: Evaluation Results and Predictions for MovieLENS10M:
 
-![image](https://github.com/user-attachments/assets/16a6f021-e193-46ec-a8a3-a1c59828759a)
-
+<img width="1275" height="317" alt="image" src="https://github.com/user-attachments/assets/fc9064dc-3a23-4def-9026-bb60d411be3b" />
 
 
 **Which movies dominate the top-10 predictions across the test set?**
@@ -494,20 +577,59 @@ To understand:
 
 **First, To study the popularity bias:**
 
-![image](https://github.com/user-attachments/assets/0e1b8ee2-b545-4c2c-bd0d-add90319c722)
+<img width="796" height="550" alt="image" src="https://github.com/user-attachments/assets/7b485c09-559c-42d2-aa8a-877763082e49" />
+
+100K: Models are strong on head (popular) items but underperform on long-tail (diverse) items. For recommendation systems, this can mean: Poor personalization, Repetition of already-known items, Missed opportunities in user engagement.
+
+**Method 1: Asymmetric Multi-instance Noise Contrastive Estimation (AMINCE) loss** that generates asymmetric positive and negative samples by balancing popular and non-popular items.
+
+AMINCE loss is a 2025 tailored to address popularity bias in sequential recommendation by modifying the classic contrastive learning setup. It extends InfoNCE contrastive loss by generating asymmetric sets of positives and negatives:
+
+Positive samples: Long-tail items (under-represented), Negative samples: Popular items (over-represented)
+
+This inverts the typical bias in training data, where popular items dominate both positive and negative sets. In conventional contrastive learning, positive samples often come from augmentations of popular items. That reinforces bias — the model learns to pull representations toward popular items.
+
+Re-balances popularity by: Favoring non-popular items as positives, Including more popular items as negatives
+
+This makes the model less reliant on popularity signals and more attentive to intrinsic item patterns.
+
+Instead of treating all samples equally (as InfoNCE does), AMINCE:
+		
+		A. Gives more weight to more informative pairs.
+		B. Tries to dampen the influence of noisy or uninformative negatives.
+		C. Adapts the contrastive loss to focus learning where it matters most.
+
+In MovieLens:
+Some movies (like blockbusters) are very frequent → popular items.
+
+Niche indie movies are less frequent.
+
+While building a sequential recommender:
+		A. AMINCE prevents the model from always recommending popular movies.
+		B. Encourages discovery of less-known (but relevant) items based on user behavior.
+
+For example:
+		A. User watches ["Inception", "The Matrix", "Blade Runner"]
+		B. Traditional methods might push "Avengers" due to popularity.
+		C. AMINCE would weigh popularity and emphasize sci-fi patterns, pushing items like "Ex Machina" instead.
+
+<img width="676" height="337" alt="image" src="https://github.com/user-attachments/assets/fd824327-7992-4827-9347-6efb9d521a8d" />
+
+<img width="532" height="342" alt="image" src="https://github.com/user-attachments/assets/8b921844-0d65-4f37-8561-182c31813bf4" />
+
+TCA4Rec (2025): Contrastive Learning with Popularity‑Aware Asymmetric Augmentation: This framework introduces a two-stage training strategy plus a novel Asymmetric Multi-instance Contrastive Estimation (AMINCE) loss to explicitly mitigate popularity bias in sequence models. It leverages a memory module and cleverly balances popular vs. long-tail items to improve robustness on sparse data.
+
+MABSRec (2025): Multi-Perspective Attention-Based Bias-Aware Sequential Recommendation: It targets the Matthew Effect (popularity reinforcing popularity) and aims to diversify recommendations by re-weighting long-tail items in the attention mechanism.
+
+Datasets: Can be used: The Amazon Sports dataset is a dataset for the Amazon Outdoor Sports product segment, similar to the Amazon dataset, which also contains user purchase and review information. [https://arxiv.org/html/2504.05323v1]
 
 
 -------------------------------------------------------------------------------------------------------------------------------------
 Model 3: GRU4Rec (Datasets: MovieLENS100-K, MovieLENS1M and MovieLENS20M)
 
-Evaluation Results and Predictions:
-
-
 --------------------------------------------------------------------------------------------------------------------------------------
 
 Model 4: SAS4Rec (Datasets: MovieLENS100-K, MovieLENS1M and MovieLENS20M)
-
-Evaluation Results and Predictions:
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
@@ -526,7 +648,7 @@ Model 5: BERT4REC (Steam Datasets)
 
 Four Classifications: 
 
-1. General Recommendation (GR): Netflix use case which we discussed above. The interaction of users and items is the only data that can be used by model. Trained on implicit feedback data and evaluated using top-n recommendation. Collaborative filter (CF) based models are classified here. 
+1. General Recommendation (GR): Netflix use case which discussed above. The interaction of users and items is the only data that can be used by model. Trained on implicit feedback data and evaluated using top-n recommendation. Collaborative filter (CF) based models are classified here. 
 
 2. Content-aware Recommendation: Amazon use case. Click-through rate prediction, CTR prediction. The dataset is explicit and contains label field. Evaluation conducted by binary classification.
 
@@ -546,10 +668,11 @@ SEO (Search Engine Optimization) and SEM techniques may also be merged, along wi
 7. Aviation and Transportation, and 
 8. Other Specialized Sectors. 
 
-**Few Other Hugging Face models to be tested:**
-1. Transformers4Rec by NVIDIA: Integrates with Hugging Face Transformers, enabling the application of transformer architectures to sequential and session-based recommendation tasks.
 
-2. RecGPT: RecGPT is a domain-adapted large language model specifically trained for text-based recommendation tasks.
+**Industrial Applications:**
+
+<img width="722" height="247" alt="image" src="https://github.com/user-attachments/assets/11539db4-9604-4a0e-957c-0f460d5d8eb6" />
+
 
 **References:**
 
