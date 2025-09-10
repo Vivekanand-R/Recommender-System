@@ -708,8 +708,9 @@ SEO (Search Engine Optimization) and SEM techniques may also be merged, along wi
 
 [16] Roy, D., Dutta, M. A systematic review and research perspective on recommender systems. J Big Data 9, 59 (2022). https://doi.org/10.1186/s40537-022-00592-5
 
-[17] A Comprehensive Review of Recommender Systems: Transitioning from Theory to Practice https://doi.org/10.48550/arXiv.2407.13699
+[17] Music4All — A Large-Scale Multi-Faceted Content-Centric Recommendation Dataset
 
+[18] A Comprehensive Review of Recommender Systems: Transitioning from Theory to Practice https://doi.org/10.48550/arXiv.2407.13699
 
 
 ----------------------------------------
