@@ -621,7 +621,7 @@ TCA4Rec (2025): Contrastive Learning with Popularity‑Aware Asymmetric Augmenta
 
 MABSRec (2025): Multi-Perspective Attention-Based Bias-Aware Sequential Recommendation: It targets the Matthew Effect (popularity reinforcing popularity) and aims to diversify recommendations by re-weighting long-tail items in the attention mechanism.
 
-Datasets: Can be used: The Amazon Sports dataset is a dataset for the Amazon Outdoor Sports product segment, similar to the Amazon dataset, which also contains user purchase and review information. [https://arxiv.org/html/2504.05323v1]
+Datasets: Can be used: The Amazon software dataset is a dataset for the Amazon software product segment, similar to the Amazon dataset, which also contains user purchase and review information. [https://arxiv.org/html/2504.05323v1]
 
 
 -------------------------------------------------------------------------------------------------------------------------------------
