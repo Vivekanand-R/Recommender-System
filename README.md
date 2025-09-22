@@ -193,7 +193,7 @@ List of Different Varieties of Datasets: (Ref: https://recbole.io/)
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
-**Model 1: Bert4Rec** Datasets: MovieLENS
+**Model 1: Bert4Rec** Datasets: MovieLENS, Music4All, Amazon Software
 
 **Model Architecture:**
 1. The model is a modified version of BERT (Bidirectional Encoder Representations from Transformers).
@@ -281,7 +281,7 @@ Sample Output:
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
-Model 2: xLSTM (Datasets: MovieLENS100-K, MovieLENS1M and MovieLENS20M)
+Model 2: xLSTM (Datasets: MovieLENS100-K, MovieLENS1M, MovieLENS20M, Music4All, Amazon Software)
 
 Section 1: Model Parameters:
 
