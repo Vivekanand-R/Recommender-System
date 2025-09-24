@@ -3,7 +3,7 @@
 
 This script trains a sequential recommender system on a **user-specified/customizable MovieLens dataset** (100K, 1M, 10M, or 20M).
 
-It preprocesses the data, maps user/item IDs, and splits interactions into train/validation/test sequences.
+It preprocesses the data, maps user/item IDs, and splits interactions with train/validation/test sequences.
 
 Users can select among **four AI models: standard LSTM, xLSTM, BERT4REC, SAS4REC** variant with configurable parameters.
 
