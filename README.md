@@ -281,7 +281,7 @@ Sample Output:
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
-Model 2: xLSTM (Datasets: MovieLENS100-K, MovieLENS1M, MovieLENS20M, Music4All, Amazon Software)
+Model 2: xLSTM (Datasets: MovieLENS100-K, MovieLENS1M, MovieLENS20M, Music4All Datasets, Amazon Software Datasets)
 
 Section 1: Model Parameters:
 
@@ -474,7 +474,7 @@ Four Classifications:
 
 3. Sequential Recommendation: Spotify, similar to time series problem, which we discussed earlier. The task of SR (next-item recommendation) is the same as GR which sorts a list of items according to preference. History interactions are organized in sequences and the model tends to characterize the sequential data. Session-based recommendation are also included here.
 
-4. Knowledge-based Recommendation: Knowledge-based recommendation introduces an external knowledge graph to enhance general or sequential recommendation.
+4. Knowledge-based Recommendation: Knowledge-based recommendation introduces the external knowledge graph to enhance general or sequential recommendation.
 
 SEO (Search Engine Optimization) and SEM techniques may also be merged, along with Google Adsense and adwords, to improve user experience further. 
 
