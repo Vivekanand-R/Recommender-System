@@ -192,6 +192,13 @@ Different Simple methods to identify user similarities:
 
 2. MUSIK4all (JKU) is a massive music interaction dataset (≈228M events, 119,140 users, TSV File) containing user–track play counts and timestamps. It is designed for music recommender systems, supporting temporal modeling, user history analysis, and large-scale evaluation.
 
+		Total rows: 252984396
+		Unique users: 119140
+		Unique tracks: 56512
+		Time span: 1970-01-01 01:00:36 → 2020-03-20 12:59:51
+		Avg. interactions per user: 2123.42
+		Min / Max interactions per user: 1 / 243384
+
 **Data Sampling Techniques:**
 				
 				A. Random Sampling → Select a fraction p of rows uniformly (e.g., USING SAMPLE 1% in DuckDB); fast but may fragment user timelines.
