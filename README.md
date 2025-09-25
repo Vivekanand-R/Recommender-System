@@ -199,6 +199,11 @@ Different Simple methods to identify user similarities:
 		Avg. interactions per user: 2123.42
 		Min / Max interactions per user: 1 / 243384
 
+Sample Datasets:
+
+<img width="376" height="336" alt="image" src="https://github.com/user-attachments/assets/2e3729b9-4e6e-47f5-a3a0-640985cb6a4b" />
+
+
 **Data Sampling Techniques:**
 				
 				A. Random Sampling → Select a fraction p of rows uniformly (e.g., USING SAMPLE 1% in DuckDB); fast but may fragment user timelines.
