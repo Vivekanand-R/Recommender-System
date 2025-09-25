@@ -190,14 +190,32 @@ Different Simple methods to identify user similarities:
 
 1. Amazon Software data usually refers to the large-scale Amazon Product Review datasets (reviews, ratings, timestamps, and product metadata) widely used for recommender system research. They capture user–item interactions across millions of products and enable benchmarking of collaborative and content-based recommendation models.
 
-2. MUSIK4all (JKU) is a massive music interaction dataset (≈228M events, 119,140 users, TSV File) containing user–track play counts and timestamps. It is designed for music recommender systems, supporting temporal modeling, user history analysis, and large-scale evaluation.
+2. MUSIK4all is a massive music interaction dataset (≈228M events, 119,140 users, TSV File) containing user–track play counts and timestamps. It is designed for music recommender systems, supporting temporal modeling, user history analysis, and large-scale evaluation.
 
+Before Filter:
 		Total rows: 252984396
 		Unique users: 119140
 		Unique tracks: 56512
 		Time span: 1970-01-01 01:00:36 → 2020-03-20 12:59:51
 		Avg. interactions per user: 2123.42
 		Min / Max interactions per user: 1 / 243384
+
+Data Sampling (Filters): 
+		A. Filter users <5 events,
+		B. cap max 1000 events per user,
+		C. hash-select ~5% of users,
+		D. output to Parquet (~10M rows).
+
+After Sampling Filter:
+		total_rows:	2533266
+		unique_users:	4584
+		unique_tracks: 	51291
+		min_timestamp:	2/22/2005 22:45
+		max_timestamp: 	3/20/2020 12:59
+		avg_interactions_per_user: 	552.6
+		min_interactions_per_user: 	5
+		max_interactions_per_user:	1000
+
 
 Sample Datasets:
 
