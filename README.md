@@ -115,6 +115,9 @@ torchaudio: 2.7.1
 <img width="811" height="562" alt="image" src="https://github.com/user-attachments/assets/2ced07c9-dfa2-40f6-ba76-1d003a190a99" />
 
 
+<img width="1116" height="736" alt="image" src="https://github.com/user-attachments/assets/3760389c-fe54-42c2-923b-3a2a6c28fd4f" />
+
+
 **Conclusion from Final Results:**
 
 A. xLSTM evaluated under a novel configuration for Sequencial recommenders; observed performance on various conditions.
