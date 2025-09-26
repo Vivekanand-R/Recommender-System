@@ -112,7 +112,7 @@ torchaudio: 2.7.1
 
 **Model Results:**
 
-<img width="811" height="562" alt="image" src="https://github.com/user-attachments/assets/2ced07c9-dfa2-40f6-ba76-1d003a190a99" />
+<img width="757" height="638" alt="image" src="https://github.com/user-attachments/assets/9aa5c873-d542-41c1-a20a-3ae71b1dac1d" />
 
 
 <img width="1116" height="736" alt="image" src="https://github.com/user-attachments/assets/3760389c-fe54-42c2-923b-3a2a6c28fd4f" />
