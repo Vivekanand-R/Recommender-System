@@ -190,6 +190,10 @@ Different Simple methods to identify user similarities:
 
 1. Amazon Software data usually refers to the large-scale Amazon Product Review datasets (reviews, ratings, timestamps, and product metadata) widely used for recommender system research. They capture user–item interactions across millions of products and enable benchmarking of collaborative and content-based recommendation models.
 
+		https://cseweb.ucsd.edu/~jmcauley/datasets/amazon_v2/
+		
+		Software	reviews (459,436 reviews)	metadata (26,815 products)
+
 2. MUSIK4all is a massive music interaction dataset (≈228M events, 119,140 users, TSV File) containing user–track play counts and timestamps. It is designed for music recommender systems, supporting temporal modeling, user history analysis, and large-scale evaluation.
 
 Before Filter:
