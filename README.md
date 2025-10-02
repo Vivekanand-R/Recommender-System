@@ -553,6 +553,11 @@ SEO (Search Engine Optimization) and SEM techniques may also be merged, along wi
 <img width="722" height="247" alt="image" src="https://github.com/user-attachments/assets/11539db4-9604-4a0e-957c-0f460d5d8eb6" />
 
 
+**List of GPU's Availability:** (A100 for Model Training, Total Run time: 200 Hours)
+
+![image](https://github.com/user-attachments/assets/c19f0af2-17d4-49af-82e0-31900cb9ac12)
+
+
 **References:**
 
 [1] xLSTM: Extended Long Short-Term Memory: https://arxiv.org/pdf/2405.04517
@@ -594,9 +599,6 @@ SEO (Search Engine Optimization) and SEM techniques may also be merged, along wi
 
 ----------------------------------------
 
-**List of GPU's Availability:**
-
-![image](https://github.com/user-attachments/assets/c19f0af2-17d4-49af-82e0-31900cb9ac12)
 
 
 
