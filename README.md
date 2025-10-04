@@ -150,6 +150,15 @@ D. Trade-offs (RQ3): xLSTM achieves competitive accuracy on large datasets but i
 
 **Comprehensive Embedding Geometry Analysis for Sequential Recommenders:**
 
+**L2 Norm:**
+
+<img width="457" height="132" alt="image" src="https://github.com/user-attachments/assets/33c5f041-03d5-4a5b-822b-62f1d87fd85b" />
+
+
+<img width="1088" height="692" alt="image" src="https://github.com/user-attachments/assets/53cf2f06-4f52-4b13-8e2a-1261640ec51e" />
+
+
+
 {
   "BERT4Rec": {
     "vocab_size": 10678,
