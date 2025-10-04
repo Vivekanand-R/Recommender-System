@@ -150,6 +150,44 @@ D. Trade-offs (RQ3): xLSTM achieves competitive accuracy on large datasets but i
 
 **Comprehensive Embedding Geometry Analysis for Sequential Recommenders:**
 
+{
+  "BERT4Rec": {
+    "vocab_size": 10678,
+    "embedding_dim": 256,
+    "num_items": 10677,
+    "key": "bert.embeddings.word_embeddings.weight"
+  },
+  "SASRec": {
+    "vocab_size": 10678,
+    "embedding_dim": 256,
+    "num_items": 10677,
+    "key": "item_embedding.weight"
+  },
+  "xLSTM": {
+    "vocab_size": 10678,
+    "embedding_dim": 256,
+    "num_items": 10677,
+    "key": "embedding.weight"
+  }
+}
+
+=== Intrinsic Dim / Anisotropy ===
+BERT4Rec:  ID≈181.97 | mean cos=0.0154 (±0.0760)
+SASRec:  ID≈204.45 | mean cos=0.0167 (±0.0720)
+xLSTM:  ID≈249.88 | mean cos=0.0004 (±0.0625)
+
+=== Hubness (k=10) ===
+BERT4Rec: Gini=0.357  max=147  mean=10.00  std=7.56
+SASRec: Gini=0.353  max=158  mean=10.00  std=7.82
+xLSTM: Gini=0.179  max=24  mean=10.00  std=3.20
+
+=== Cross-Model Similarity ===
+BERT4Rec vs SASRec:  Jaccard@10=0.095  Jaccard@50=0.105  CosStructCorr=0.469  CKA=0.413  ProcErr=0.881
+BERT4Rec vs xLSTM:  Jaccard@10=0.001  Jaccard@50=0.004  CosStructCorr=0.008  CKA=0.030  ProcErr=0.990
+SASRec vs xLSTM:  Jaccard@10=0.001  Jaccard@50=0.003  CosStructCorr=0.006  CKA=0.029  ProcErr=1.018
+
+
+
 		A. Embedding Spectrum Analysis 
 		B. Variance Distribution & Intrinsic Dimension Study 
 		C. Hubness and Popularity Bias Evaluation 
