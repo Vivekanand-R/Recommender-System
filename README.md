@@ -259,7 +259,7 @@ Interpretation:
 		4. Visually, xLSTM’s space is broader and more uniform.
 		5. This geometry supports more stable neighbor retrieval across item types.
 
-**Overall summary**
+**summary**
 
 		A. BERT4Rec & SASRec: classic Transformer geometry — sharp spectral drop-off, anisotropy, hub dominance, overlapping t-SNE blob.
 		B. xLSTM: near-isotropic, high-rank space with uniform neighbor frequency.
@@ -268,6 +268,35 @@ Interpretation:
 		F. Combining xLSTM with either Transformer (ensemble) could yield complementary strengths — one captures high-level correlations, the other preserves fine-grained variety.
 
 Overall, Transformers (BERT4Rec, SASRec) learn narrow, popularity-biased manifolds; xLSTM learns a broad, isotropic embedding landscape — richer, fairer, and geometrically independent.
+
+
+**A. Embedding anisotropy visualization:**
+
+The Anisotropy Index (AI) measures how uniformly embeddings are distributed in space — it’s the mean cosine similarity between random pairs of vectors.
+A low AI (≈0) means embeddings are evenly spread (isotropic), while a high AI (>0.05) means they point in similar directions (anisotropic), indicating reduced geometric diversity.
+
+<img width="848" height="600" alt="image" src="https://github.com/user-attachments/assets/12fd0c69-fc86-4d50-81e4-2198fbbcf89d" />
+
+BERT4Rec (AI = 0.0163) and SASRec (AI = 0.0164) show mild anisotropy — their movie embeddings tend to align toward a common direction, meaning popular movies cluster together in the same region.
+In contrast, xLSTM (AI = 0.00035) produces an almost perfectly isotropic space, where movie vectors are well-spread and orthogonal.
+Thus, xLSTM captures sequence-dependent uniqueness, representing each film (e.g., The Matrix, Titanic, Toy Story) in distinct, uncorrelated directions rather than emphasizing overall popularity.
+This geometric diversity allows xLSTM to model temporal order and recency more effectively, explaining its superior recall despite higher embedding norms.
+
+
+**B. Cosine structure correlation and CKA similarity:**
+
+BERT4Rec vs SASRec | Corr=0.471 | CKA=0.427
+
+BERT4Rec vs xLSTM | Corr=0.010 | CKA=0.030
+
+SASRec vs xLSTM | Corr=0.008 | CKA=0.030
+
+<img width="1160" height="451" alt="image" src="https://github.com/user-attachments/assets/9f306212-39f4-440f-96b1-a4a634f6dbae" />
+
+In the cross-model similarity study, BERT4Rec ↔ SASRec showed a cosine structure correlation of 0.471 and a CKA similarity of 0.427, indicating a strong geometric overlap. Both are Transformer-based models, meaning they learn comparable contextual movie embeddings where distances reflect semantic or co-occurrence similarity (e.g., similar genres or viewing patterns).
+
+In contrast, BERT4Rec ↔ xLSTM (0.010, 0.030) and SASRec ↔ xLSTM (0.008, 0.030) revealed minimal structural similarity. The xLSTM embedding space is organized very differently — it doesn’t rely on global movie similarity but rather captures temporal and sequential dependencies. Thus, xLSTM represents movies based on their order and recency in user histories, not just shared context, which explains its distinct geometry despite strong recall performance.
+
 
 ---------------------------------------
 
