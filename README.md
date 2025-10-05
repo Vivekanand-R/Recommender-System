@@ -667,6 +667,8 @@ To understand:
 
 100K: Models are strong on head (popular) items but underperform on long-tail (diverse) items. For recommendation systems, this can mean: Poor personalization, Repetition of already-known items, Missed opportunities in user engagement.
 
+<img width="680" height="463" alt="image" src="https://github.com/user-attachments/assets/664d7350-290a-40ea-adfc-6dbcf37692e8" />
+
 Datasets: Can be used: The Amazon software dataset is a dataset for the Amazon software product segment, similar to the Amazon dataset, which also contains user purchase and review information. [https://arxiv.org/html/2504.05323v1]
 
 **Baseline Model Comparision:**
