@@ -320,8 +320,6 @@ In contrast, BERT4Rec ↔ xLSTM (0.010, 0.030) and SASRec ↔ xLSTM (0.008, 0.03
       B. Self-attention mechanism understands contextual relationships between movies.
       C. Outputs a dense layer that predicts probabilities for all possible movies.
 
-![image](https://github.com/user-attachments/assets/64fbe331-7fec-4787-84d5-dbfd55f9ba95)
-
 **Making Predictions:**
 During inference:
     The last few movies a user watched are fed into the model.
