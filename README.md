@@ -51,40 +51,14 @@ G. Early stopping + best model saving
 H. Easy-readable prediction logging with movie titles
 
 
-**Few Other Research Focus Areas/Questions:**
-
-1. Embedding Saturation and Utilization: Are larger embeddings really helping the model learn better user/item relationships, or are they underutilized?
-
-2. Gradient Stability / Exploding Gradients: Do longer sequences introduce more instability or gradient explosion?
-
-3. Computation-Time vs Performance Trade-off: At what point does longer sequence input hurt speed more than it helps accuracy?
-
-4. Effective Sequence Length vs. Truncation: How much of the input sequence is actually contributing to predictions?
-
-5. Overfitting Signals: Do longer sequences encourage memorization rather than generalization?
-
-6. Top-k Diversity / Coverage: Does sequence length affect recommendation diversity or item popularity bias?
-
-7. Token Usage Heatmap: Where in the sequence is the model focusing? More recent items or early ones?
-
-8. Ablation Logging: How much performance drop occurs when certain features are turned off?
-
-
 **Initial Setup Requirements**
 
-A. Install Necessary Packages (in quite mode)
-
-B. Triton Activation For GPU Acceleration (To make sure Triton and GPU Accerleration, to speed up the training process)
-
-C. Select the necessary model and datasets (Model)
-
-D. Run all would work, to change the model and datasets, adjust the variable in the main script.
-
-E. Script is mainly desinged for Colab Environment, for A100 GPU. Single click solution.
+A. Install Necessary Packages (in quite mode) | B. Triton Activation For GPU Acceleration (To make sure Triton and GPU Accerleration, to speed up the training process) |  C. Select the necessary model and datasets (Model)  | D. Run all would work, to change the model and datasets, adjust the variable in the main script. | E. Script is mainly desinged for Colab Environment, for A100 GPU. Single click solution.
 
 **Methodology**
 
 **Experimental Setup::**
+
 1. Datasets: MovieLens (100K, 1M, 10M, Steam)
 
 2. Models Evaluated: xLSTM, BERT4Rec, SASRec
@@ -128,7 +102,7 @@ E. Script is mainly desinged for Colab Environment, for A100 GPU. Single click s
 <img width="1116" height="736" alt="image" src="https://github.com/user-attachments/assets/3760389c-fe54-42c2-923b-3a2a6c28fd4f" />
 
 
-**Research Findings:**
+**Overall Research Findings:**
 
 RQ1 — Performance Scaling Across Dataset Sizes:  xLSTM demonstrates a clear positive scaling trend. While performance on the smallest dataset (ML 100K) drags the Transformer models, xLSTM significantly improves as the interaction histories emerge. On MovieLens 10M, xLSTM reaches Recall@10 values around 31.8 percent, converging closely with BERT4Rec, indicating that its gating mechanisms and the enhanced memory structures leverage medium scale datasets effectively. 
 
