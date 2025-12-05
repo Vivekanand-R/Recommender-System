@@ -339,28 +339,13 @@ Masks the last movie (or predicts the next).
 The model outputs probabilities for all movies.
 Top-K movies with the highest probability are recommended.
 
-Instead of Top-K, Sequencial Recommendation needs to be done, considering the timestamp.    
-
-**Performance Optimization:** Comparision and Performance Results For All Approaches:
-1st set of results (To be fine tuned further)
-
-![image](https://github.com/user-attachments/assets/6f6ab94b-4b13-4fc4-a7ff-9fab78e2baa1)
-
-**Interpretations:**
-
-1. Recall@10 = 0.2932, Meaning: In ~29.3% of cases, the true next item appears in the top 10 predictions. Solid result for a baseline xLSTM model. It means if we recommend 10 movies, ~3 times out of 10, the correct one will be in that list.
-
-2. MRR@10 = 0.1266, Mean Reciprocal Rank: Measures the position of the first correct item in the top-10 list. On average, the correct item appears around position 8 (1/0.1266 ≈ 7.9). Higher MRR means better ranking of correct items.
-
-3. NDCG@10 = 0.1655, Normalized Discounted Cumulative Gain: Measures both relevance and position in the ranked list. A higher value means the model is not just retrieving the right item, but ranking it closer to the top. At ~16.5% of the optimal ranking gain. Good enough for an initial run,better results when its finetunes over 200 epochs. 
-
-**Evaluation Metrics:** To evaluate the model accuracy Recall 5, 10, Precision, NDCG will be used mainly. 
+**Evaluation Metrics:** To evaluate the model accuracy Recall 5, 10, Precision, NDCG will be used. 
 
 Recall = How many relevant items recommended/Total No. of relevant items **available** (measures the relevance. )
 
 Precision: How many relevant items recommended//Total No. of items **recommended** (measures the accuracy.)
 
-**Normalized Discounted Combined Gain (NDGC):** For Ranking.
+Normalized Discounted Combined Gain (NDGC): For Ranking Quality [DGC/IDGC].
 
 
 **Cold Start Problem** :
