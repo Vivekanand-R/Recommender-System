@@ -204,7 +204,7 @@ Interpretation:
 		4. Visually, xLSTM’s space is broader and more uniform.
 		5. This geometry supports more stable neighbor retrieval across item types.
 
-**summary**
+**Summary**
 
 		A. BERT4Rec & SASRec: classic Transformer geometry — sharp spectral drop-off, anisotropy, hub dominance, overlapping t-SNE blob.
 		B. xLSTM: near-isotropic, high-rank space with uniform neighbor frequency.
@@ -307,10 +307,6 @@ Some of the commonly used approaches were:
 **Performance Optimization:**
 
 A. Implement Leave-One-Out Splitting, B. Integrate Negative Sampling.
-
-List of Models:
-
-![image](https://github.com/user-attachments/assets/d157ae60-54c2-41e8-9bf3-e79e1250bc1b)
 
 **Logit Score:** Direct Score, before applying any activation funtions, non bounded ( can be larger and can go larger negative values). Higher the logit score, better the prediction is.
 
