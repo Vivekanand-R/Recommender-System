@@ -363,10 +363,6 @@ List of Models:
 
 ![image](https://github.com/user-attachments/assets/d157ae60-54c2-41e8-9bf3-e79e1250bc1b)
 
-Sample Output:
-![image](https://github.com/user-attachments/assets/ae41618e-a913-44c1-80d6-76d15a3faba3)
-
-
 **Logit Score:** Direct Score, before applying any activation funtions, non bounded ( can be larger and can go larger negative values). Higher the logit score, better the prediction is.
 
 **Probability:** Derived from logit score after applying softmax function (always between 0 to 1), probability is calculated across all the Items in the list, so it might seem to be less, distributed across all of them. 
