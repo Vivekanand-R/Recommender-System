@@ -1,5 +1,24 @@
 
-**Research Topic:** xLSTM Architecture's For Recommendations [Streaming Applications]
+**Research Topic:** xLSTM Architecture's For Recommendations 
+
+**Research questions**
+
+This report aims to answer the following four research questions:
+
+RQ1: How does xLSTM’s performance scale with dataset size compared to established architectures like BERT4Rec and SAS4Rec ?.
+
+RQ2: How do sequence length and embedding size influence model performance across different item-popularity levels, and do larger sequences or embeddings improve a model’s ability to make accurate long-tail (less popular) recommendations ?.
+
+RQ3: What trade-offs exist between recommendation accuracy and computational cost as sequence length and model complexity increase?.
+
+RQ4: Embedding Saturation and Utilization: How do different model architectures make effective use of their embedding representations, and does embedding dimensionality lead to better spatial distribution, representation diversity, or improved predictive performance ?.
+
+The primary objective is to evaluate the effectiveness of the xLSTM model across multiple datasets and benchmark it against state-of-the-art baselines using established ranking metrics.
+
+
+**Data Flow Pipeline**
+
+<img width="1013" height="767" alt="image" src="https://github.com/user-attachments/assets/ad9043b6-06a0-4398-8754-796d0f5e2b94" />
 
 This script trains a sequential recommender system on a **user-specified/customizable MovieLens dataset** (100K, 1M, 10M, or 20M).
 
@@ -10,12 +29,6 @@ Users can select among **four AI models: standard LSTM, xLSTM, BERT4REC, SAS4REC
 The selected model is trained using PyTorch with evaluation metrics like Recall@10, MRR, Hit Rate and NDCG.
 
 After training, the best model is used to predict and display top-10 movie recommendations based on user history.
-
-
-**Data Flow Pipeline**
-
-<img width="1013" height="767" alt="image" src="https://github.com/user-attachments/assets/ad9043b6-06a0-4398-8754-796d0f5e2b94" />
-
 
 **Training script that integrates:**
 
@@ -34,21 +47,6 @@ F. Evaluation metrics (Recall@10, MRR, NDCG)
 G. Early stopping + best model saving
 
 H. Easy-readable prediction logging with movie titles
-
-
-**Research questions**
-
-This report aims to answer the following four research questions: 
-
-RQ1: How does xLSTM’s performance scale with dataset size compared to established architectures like BERT4Rec and SAS4Rec ?.
-
-RQ2: How do sequence length and embedding size influence model performance across different item-popularity levels, and do larger sequences or embeddings improve a model’s ability to make accurate long-tail (less popular) recommendations ?.
-
-RQ3: What trade-offs exist between recommendation accuracy and computational cost as sequence length and model complexity increase?.
-
-RQ4: Embedding Saturation and Utilization: How do different model architectures make effective use of their embedding representations, and does embedding dimensionality lead to better spatial distribution, representation diversity, or improved predictive performance ?.
-
-The primary objective is to evaluate the effectiveness of the xLSTM model across multiple datasets and benchmark it against state-of-the-art baselines using established ranking metrics.
 
 
 **Few Other Research Focus Areas/Questions:**
@@ -108,12 +106,7 @@ E. Script is mainly desinged for Colab Environment, for A100 GPU. Single click s
 4. Early stopping triggered based on Recall@10 Improvments
 
 
-**Requirements:**
-mlstm_kernels: 2.0.0
-xlstm: 2.0.4
-torch: 2.7.1
-torchvision: 0.22.1
-torchaudio: 2.7.1
+**Requirements:** mlstm_kernels: 2.0.0 | xlstm: 2.0.4 | torch: 2.7.1 | torchvision: 0.22.1 | torchaudio: 2.7.1
 
 **Total Training Hours**: 200 Hours (A100 GPU - 84 Experiments)
 
