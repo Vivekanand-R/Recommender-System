@@ -128,8 +128,7 @@ E. Script is mainly desinged for Colab Environment, for A100 GPU. Single click s
 <img width="1116" height="736" alt="image" src="https://github.com/user-attachments/assets/3760389c-fe54-42c2-923b-3a2a6c28fd4f" />
 
 
-**Conclusion from Final Results:**
-
+**Research Findings:**
 
 RQ1 — Performance Scaling Across Dataset Sizes:  xLSTM demonstrates a clear positive scaling trend. While performance on the smallest dataset (ML 100K) drags the Transformer models, xLSTM significantly improves as the interaction histories emerge. On MovieLens 10M, xLSTM reaches Recall@10 values around 31.8 percent, converging closely with BERT4Rec, indicating that its gating mechanisms and the enhanced memory structures leverage medium scale datasets effectively. 
 
@@ -356,13 +355,10 @@ Some of the commonly used approaches were:
 3. Hierarchical approach, and
 4. Novalty or Randomness Approach
 
-
-
 **Performance Optimization:**
 
 A. Implement Leave-One-Out Splitting, B. Integrate Negative Sampling.
 
-   
 List of Models:
 
 ![image](https://github.com/user-attachments/assets/d157ae60-54c2-41e8-9bf3-e79e1250bc1b)
@@ -547,8 +543,6 @@ Section 3: Evaluation Results and Predictions for MovieLENS10M:
 
 <img width="734" height="228" alt="image" src="https://github.com/user-attachments/assets/2465b706-bf99-44aa-b8ae-b4a69f2881a6" />
 
-
-
 -----------------------------------------------------------------------------------------------
 
 **General Classification of Recommender Systems:**
@@ -560,16 +554,6 @@ General Recommendation (GR):-  These models rely solely on user–item interacti
 Content-Aware Recommendation:- These models incorporate additional side information, such as user or item features. They are often applied in click-through rate (CTR) prediction tasks, using explicit feedback and binary classification evaluation. As feature-based methods, they often go beyond raw user–item interactions by including information about users, items, or context.
 
 Knowledge-Based Recommendation:- Utilizes external knowledge graphs to add semantic or structural context beyond interactions.
-
-
-Broad Paradigms:-
-Collaborative Filtering: Similarities from user/item interaction histories.
-
-Content-Based Filtering: Predictions based on item attributes or metadata.
-
-
-
-
 
 **References:**
 
@@ -617,9 +601,9 @@ Content-Based Filtering: Predictions based on item attributes or metadata.
 Other Supporting Information:
 
 **Scope** For Recommendation Engines In Various Sectors:
-1. Energy Sectors, (Energy Saving Programs, Substations, CO2 Emission, Solar, Grid Automation, Sensor Meters, Smart Buildings, Smart Cities, Electrical Products and HVAC transmission)
-2. Healthcare and Pharmaceutical, (drug targets, clinical trial candidates, and molecule designs)
-3. Aerospace and Transportation, (Test Procedure Recommendations Wind Tunnel, Engine Testing, Component & Subsystem Design Recommendations, Recommended temperature/pressure cycles for composites curing, Predictive Maintenance Recommendation, Supply chain and OEM Stocks recommendations)
+1. **Energy Sectors**, (Energy Saving Programs, Substations, CO2 Emission, Solar, Grid Automation, Sensor Meters, Smart Buildings, Smart Cities, Electrical Products and HVAC transmission)
+2. **Healthcare and Pharmaceutical**, (drug targets, clinical trial candidates, and molecule designs)
+3. **Aerospace and Transportation**, (Test Procedure Recommendations Wind Tunnel, Engine Testing, Component & Subsystem Design Recommendations, Recommended temperature/pressure cycles for composites curing, Predictive Maintenance Recommendation, Supply chain and OEM Stocks recommendations)
 4. Banking and Fintech sectors, (Wealth Management, Customized Credit Products, Investment Portfolio's, Equities, and Insurance plan recommendations)
 5. Technology and Service sectors, (Ecommerce, products, content, or services, boosting engagement and customer satisfaction.)
 6. Entertainment and Gamification, (Custom Localization and Immersive Experience)
@@ -627,7 +611,7 @@ Other Supporting Information:
 8. Other Specialized Sectors. 
 
 
-**List of GPU's Availability:** (A100 for Model Training, Total Run time: 200 Hours approx)
+**List of GPU's Availability:** (For Model Training)
 
 ![image](https://github.com/user-attachments/assets/c19f0af2-17d4-49af-82e0-31900cb9ac12)
 
