@@ -1,7 +1,9 @@
 
+
+
 **Research Topic:** xLSTM Architecture's For Recommendations 
 
-**Research questions**
+**Research questions:**
 
 This report aims to answer the following four research questions:
 
@@ -396,7 +398,6 @@ Section 1: Model Parameters:
 
 ![image](https://github.com/user-attachments/assets/6b456f6f-c137-4782-a333-6a76fd5b0d58)
 
-![image](https://github.com/user-attachments/assets/10382bb0-d290-4994-a9f3-2906e38f19d8)
 
 **Model Architecture:** 
 
@@ -632,17 +633,16 @@ Other Supporting Information:
 
 **Scope** For Recommendation Engines In Various Sectors:
 1. Energy Sectors, (Energy Saving Programs, Substations, CO2 Emission, Solar, Grid Automation, Sensor Meters, Smart Buildings, Smart Cities, Electrical Products and HVAC transmission)
-2. Banking and Fintech sectors, (Wealth Management, Customized Credit Products, Investment Portfolio's, Equities, and Insurance plan recommendations)
-3. Technology and Service sectors, (Ecommerce, products, content, or services, boosting engagement and customer satisfaction.)
-4. Entertainment and Gamification, (Custom Localization and Immersive Experience)
-5. Beverages & Agriculture Industry (AI-based recommendations for improved crop yield, agricultural products, custom fertilizers, supply and demand forecasting, as well as weather and climate change insights using satellite data.)
-6. Healthcare and Pharmaceutical, (drug targets, clinical trial candidates, and molecule designs)
-7. Aviation and Transportation, and  (Test Procedure Recommendations (Wind Tunnel, Engine Testing), Component & Subsystem Design Recommendations, Recommended temperature/pressure cycles for composites curing, Predictive Maintenance Recommendation, Supply chain and OEM Stocks recommendations)
+2. Healthcare and Pharmaceutical, (drug targets, clinical trial candidates, and molecule designs)
+3. Aerospace and Transportation, (Test Procedure Recommendations Wind Tunnel, Engine Testing, Component & Subsystem Design Recommendations, Recommended temperature/pressure cycles for composites curing, Predictive Maintenance Recommendation, Supply chain and OEM Stocks recommendations)
+4. Banking and Fintech sectors, (Wealth Management, Customized Credit Products, Investment Portfolio's, Equities, and Insurance plan recommendations)
+5. Technology and Service sectors, (Ecommerce, products, content, or services, boosting engagement and customer satisfaction.)
+6. Entertainment and Gamification, (Custom Localization and Immersive Experience)
+7. Beverages & Agriculture Industry (AI-based recommendations for improved crop yield, agricultural products, custom fertilizers, supply and demand forecasting, as well as weather and climate change insights using satellite data.)
 8. Other Specialized Sectors. 
 
 
-
-**List of GPU's Availability:** (A100 for Model Training, Total Run time: 200 Hours)
+**List of GPU's Availability:** (A100 for Model Training, Total Run time: 200 Hours approx)
 
 ![image](https://github.com/user-attachments/assets/c19f0af2-17d4-49af-82e0-31900cb9ac12)
 
