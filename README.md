@@ -36,7 +36,22 @@ G. Early stopping + best model saving
 H. Easy-readable prediction logging with movie titles
 
 
-**Few Research Focus Areas/Questions:**
+**Research questions**
+
+This report aims to answer the following four research questions: 
+
+RQ1: How does xLSTM’s performance scale with dataset size compared to established architectures like BERT4Rec and SAS4Rec ?.
+
+RQ2: How do sequence length and embedding size influence model performance across different item-popularity levels, and do larger sequences or embeddings improve a model’s ability to make accurate long-tail (less popular) recommendations ?.
+
+RQ3: What trade-offs exist between recommendation accuracy and computational cost as sequence length and model complexity increase?.
+
+RQ4: Embedding Saturation and Utilization: How do different model architectures make effective use of their embedding representations, and does embedding dimensionality lead to better spatial distribution, representation diversity, or improved predictive performance ?.
+
+The primary objective is to evaluate the effectiveness of the xLSTM model across multiple datasets and benchmark it against state-of-the-art baselines using established ranking metrics.
+
+
+**Few Other Research Focus Areas/Questions:**
 
 1. Embedding Saturation and Utilization: Are larger embeddings really helping the model learn better user/item relationships, or are they underutilized?
 
@@ -120,32 +135,17 @@ torchaudio: 2.7.1
 
 **Conclusion from Final Results:**
 
-A. xLSTM evaluated under a novel configuration for Sequencial recommenders; observed performance on various conditions.
 
-B. Performance Scaling (RQ1): xLSTM matches BERT4Rec's Recall@10 (~26-27%) on the 1M dataset, indicating scalability with richer interaction histories. Performance converges  as dataset size grows.
+RQ1 — Performance Scaling Across Dataset Sizes:  xLSTM demonstrates a clear positive scaling trend. While performance on the smallest dataset (ML 100K) drags the Transformer models, xLSTM significantly improves as the interaction histories emerge. On MovieLens 10M, xLSTM reaches Recall@10 values around 31.8 percent, converging closely with BERT4Rec, indicating that its gating mechanisms and the enhanced memory structures leverage medium scale datasets effectively. 
 
-C. Sequence Sensitivity (RQ2): Standard deviation increases with sequence length, underscoring sensitivity to input length variations.
+RQ2 — Effects of Sequence Length and Embedding Size: Experiments across sequence lengths of 32, 64, and 128 show that xLSTM exhibits increasing performance variance as sequences grow longer, reflecting its sensitivity to temporal window size. Unlike Transformer baselines, which often compress older interactions into dominant embedding directions, xLSTM maintains stronger temporal fidelity in long sequences due to its recurrent gating structure. This results in improved handling of long-term dependencies and enhanced differentiation of long tail items. Larger embedding dimensions further strengthen this effect on the large datasets, while offering limited benefit in sparse or in the short history domains (Table 5.1).
 
-D. Trade-offs (RQ3): xLSTM achieves competitive accuracy on large datasets but incurs higher computational costs, especially in smaller-scale scenarios.
+RQ3 — Accuracy vs. Computational Efficiency Trade-offs: xLSTM introduces a measured trade-off between accuracy and computational cost. Training times are typically 1.5×–2× longer than other baselines, and inference speed is moderate—faster than deep Transformer architectures yet slower than lightweight recurrent models. However, xLSTM avoids the quadratic attention bottleneck of Transformers, offering more predictable scaling in long sequences and large catalog sizes. Overall, xLSTM provides balanced accuracy efficiency characteristics across the datasets (Table 5.1).
 
-**E. From 10M Datasets:**
+RQ4 — Embedding Utilization, Saturation, and Representational Diversity: Embedding geometry analyses reveal that xLSTM makes substantially more effective use of embedding space than Transformer baselines. While BERT4Rec and SAS4Rec exhibits the anisotropic embedding structures driven by the popularity bias, xLSTM produces nearly isotropic embeddings with lower hubness, higher intrinsic dimensionality, and more uniform variance distribution. CKA similarity studies further show that the xLSTM learns fundamentally different, sequence-oriented embedding structures rather than compressing items along global similarity axes.
 
-	🔸 xLSTM: 
- 	Dominates all three major metrics — this model is clearly the best choice.
-	For longer sequences (e.g., 128+), xLSTM maintains advantage over transformer-based models.
-	Performs well at all sequence lengths, Slightly best at 64, but stable performance overall
+Overall, xLSTM demonstrates strong scaling behavior (RQ1), clear sensitivity to sequence length and embedding size (RQ2), meaningful efficiency‑accuracy trade-offs (RQ3), and superior embedding utilization compared to Transformer (RQ4). 
 
-	🔸 BERT4Rec:
-	In 10M datasets, Solid performance, but consistently lower than xLSTM. 
-	Shows a performance dip at Seq Len = 64:
-	Recall@10 drops to 0.2744 (vs. 0.3112 and 0.3171 at 32 and 128)
-	Best at Seq Len = 128, but still behind xLSTM
-	
-	🔸 SAS4Rec:
-	Performance drops drastically as sequence length increases:
-	Recall@10 drops from 0.2143 → 0.1271 → 0.0727
-	This trend suggests SAS4Rec is not able to capture long-term dependencies effectively
-	Also shows lower parameter count, but at a cost of worse accuracy
 
 
 **Comprehensive Embedding Geometry Analysis for Sequential Recommenders:**
@@ -298,47 +298,6 @@ SASRec vs xLSTM | Corr=0.008 | CKA=0.030
 In the cross-model similarity study, BERT4Rec ↔ SASRec showed a cosine structure correlation of 0.471 and a CKA similarity of 0.427, indicating a strong geometric overlap. Both are Transformer-based models, meaning they learn comparable contextual movie embeddings where distances reflect semantic or co-occurrence similarity (e.g., similar genres or viewing patterns).
 
 In contrast, BERT4Rec ↔ xLSTM (0.010, 0.030) and SASRec ↔ xLSTM (0.008, 0.030) revealed minimal structural similarity. The xLSTM embedding space is organized very differently — it doesn’t rely on global movie similarity but rather captures temporal and sequential dependencies. Thus, xLSTM represents movies based on their order and recency in user histories, not just shared context, which explains its distinct geometry despite strong recall performance.
-
-
----------------------------------------
-
-**Data Flow (At High Level)**
-
-<img width="660" height="838" alt="image" src="https://github.com/user-attachments/assets/6bf85359-c8ed-400d-99ab-7fd04e323cdc" />
-
----------------------------------------
-
-# Recommender Systems: (In Detail)
-
-Audio Podcast Version: https://www.dropbox.com/scl/fi/zv511ysp0ecdaqbo9nskp/Recommender-Systems_-Architectures-Applications-and-Market-Analysis.wav?rlkey=3u9za3bbogvc0506ubxohxe2w&st=gy3ekapc&dl=0
-
-Estimated Read Time: 10-15 Minutes
-
-Introduction to Recommender Systems:
-
-At its core, a **recommendation engine** uses computer algorithms to predict and suggest items of interest to users based on their past behaviors and contextual data. On the deep learning front, xLSTM (extended LSTM) and Transformers have been evolved with latest architectures in recent years and plays a very important role in Large Language Models. 
-
-Since recommenders have became an essential part of our daily digital experiences, in this paper we will be leveraging XLSTM architecture based recommenders and will be comparing the results with other modern architectures like Autotransformers, Recurring Neural Networks (RNN) and other Matrix Factorization Methods. xLSTM incorporates architectural enhancements like attention mechanism, gating improvments and bidirectional capabilities. It will be impactful due to several unique aspects when to compared to the tradional successful methods. 
-
-**Existing Approaches:**
-**Transformers Based:** Uses the self-attention mechanism from transformer architectures (like in GPT or BERT) to model the user-item interactions. It also captures the complex sequential patterns in user behavior (e.g., purchase history or clicks) and finally makes personalized recommendations by understanding the contextual relationships between items and users. Unlike, RNN which process information sequencially (one step at a time), transformer process information in parallel utilizing the self attentio mechanism which results in faster computation precerving long term dependencies.
-
-A transformer-based recommender system uses an embedding layer to convert the users and items into dense vector representations. It applies self-attention layers to capture complex dependencies and sequential relationships in user-item interactions, enhanced by positional encodings to preserve and keep the order of actions. The final output layer computes scores or rankings to predict the most relevant items for each user.
-
-**Matrix Factorization Based:** It decompose a user-item interaction matrix into two smaller matrices: one representing users and the other representing items. These matrices capture latent factors (hidden patterns) that explain the user preferences and item characteristics. By reconstructing the original matrix, the system predicts how much a user might like an unseen item. Some techniques include SIngular Value Decomposition (SVD), Non-Negative Matrix Factorization (NMF) and Probabilistic Matrix Factorization (PMF).
-
-**Proposed Hybrid Methods & Noval Approaches:** xLSTM (extended LSTM) incorporates architectural enhancements like attention mechanism, gating improvments and bidirectional capabilities. It will be impactful due to several unique aspects when to compared to the traditional successful methods. 
-
-Value Proposition: The core concept and unique benefit is still the same **recommend the best similar product/service to the end user** and to help the users. 
-
-It is also estimated that the **market scope** for recommender system is expected to be approx 20-28 billion by 2030, currently in 2024 valued approx 6 billion US dollars. 
-
-Below are the two major types in Recommenders:
-1. Collaborative Filtering (User to User), and
-2. Content Based Filtering (Product to Product).
-
-Different Simple methods to identify user similarities:
-1. Correlations, 2. Cosine Similarities, 3. Jaccard Similarities, 4. Euclidean Distance, 5. Hamming Distance, 6. Manhatten Distance, 7. Bhattachryya Distance, 8. Neural Network Embeddings (Collaborative Filtering), 9. Kullback Leibler divergence, 10. Embeddings and Latent Features, 11. Sequence-Based Similarity, 12. Deep Collaborative Filtering with Embeddings (via Neural Networks), 13. Transformer Models for Sequential Recommendations (e.g. BERT4Rec), and 14. Other Hybrid Approches.
 
 
 **Datasets:**
@@ -655,61 +614,34 @@ Section 3: Evaluation Results and Predictions for MovieLENS10M:
 <img width="1275" height="317" alt="image" src="https://github.com/user-attachments/assets/fc9064dc-3a23-4def-9026-bb60d411be3b" />
 
 
-**Which movies dominate the top-10 predictions across the test set?**
-
-To understand:
-
-# Popularity bias (if a few items always appear), # Low diversity in predictions, # Whether the model is overfitting to frequent items
-
-**First, To study the popularity bias:**
+**Popularity bias:**
 
 <img width="796" height="550" alt="image" src="https://github.com/user-attachments/assets/7b485c09-559c-42d2-aa8a-877763082e49" />
 
-100K: Models are strong on head (popular) items but underperform on long-tail (diverse) items. For recommendation systems, this can mean: Poor personalization, Repetition of already-known items, Missed opportunities in user engagement.
+<img width="734" height="228" alt="image" src="https://github.com/user-attachments/assets/2465b706-bf99-44aa-b8ae-b4a69f2881a6" />
 
-<img width="680" height="463" alt="image" src="https://github.com/user-attachments/assets/664d7350-290a-40ea-adfc-6dbcf37692e8" />
 
-Datasets: Can be used: The Amazon software dataset is a dataset for the Amazon software product segment, similar to the Amazon dataset, which also contains user purchase and review information. [https://arxiv.org/html/2504.05323v1]
-
-**Baseline Model Comparision:**
-
-![image](https://github.com/user-attachments/assets/0c85e244-aedd-4423-8138-46ef2494ca84)
 
 -----------------------------------------------------------------------------------------------
 
-**Recbole - Major Classifications:**
+**General Classification of Recommender Systems:**
 
-Four Classifications: 
+Sequential Recommendation (SR):- SR focuses on next-item prediction by modeling the temporal ordering of user interactions. These models utilize sequential data to capture evolving user preferences. RNN-based and transformer-based models are generally included in this category, and this is the primary research focus in this thesis work.
 
-1. General Recommendation (GR): Netflix use case which discussed above. The interaction of users and items is the only data that can be used by model. Trained on implicit feedback data and evaluated using top-n recommendation. Collaborative filter (CF) based models are classified here. 
+General Recommendation (GR):-  These models rely solely on user–item interaction data, typically in the form of implicit feedback. Implicit feedback includes signals that indirectly indicate user preferences, such as clicks, add-to-cart events, purchases, time spent, or interaction frequency.
 
-2. Content-aware Recommendation: Amazon use case. Click-through rate prediction, CTR prediction. The dataset is explicit and contains label field. Evaluation conducted by binary classification.
+Content-Aware Recommendation:- These models incorporate additional side information, such as user or item features. They are often applied in click-through rate (CTR) prediction tasks, using explicit feedback and binary classification evaluation. As feature-based methods, they often go beyond raw user–item interactions by including information about users, items, or context.
 
-3. Sequential Recommendation: Spotify, similar to time series problem, which we discussed earlier. The task of SR (next-item recommendation) is the same as GR which sorts a list of items according to preference. History interactions are organized in sequences and the model tends to characterize the sequential data. Session-based recommendation are also included here.
-
-4. Knowledge-based Recommendation: Knowledge-based recommendation introduces the external knowledge graph to enhance general or sequential recommendation.
-
-SEO (Search Engine Optimization) and SEM techniques may also be merged, along with Google Adsense and adwords, to improve user experience further. 
-
-**Scope** For Recommendation Engines In Various Sectors:
-1. Energy Sectors, (Energy Saving Programs, Substations, CO2 Emission, Solar, Grid Automation, Sensor Meters, Smart Buildings, Smart Cities, Electrical Products and HVAC transmission)
-2. Banking and Fintech sectors, (Wealth Management, Customized Credit Products, Investment Portfolio's, Equities, and Insurance plan recommendations)
-3. Technology and Service sectors, (Ecommerce Products)
-4. Entertainment and Gamification, (Custom Localization and Immersive Experience)
-5. Food, Beverages & Agriculture Industry (AI-based recommendations for improved crop yield, agricultural products, custom fertilizers, supply and demand forecasting, as well as weather and climate change insights using satellite data.)
-6. Healthcare and Pharmaceutical, 
-7. Aviation and Transportation, and 
-8. Other Specialized Sectors. 
+Knowledge-Based Recommendation:- Utilizes external knowledge graphs to add semantic or structural context beyond interactions.
 
 
-**Industrial Applications:**
+Broad Paradigms:-
+Collaborative Filtering: Similarities from user/item interaction histories.
 
-<img width="722" height="247" alt="image" src="https://github.com/user-attachments/assets/11539db4-9604-4a0e-957c-0f460d5d8eb6" />
+Content-Based Filtering: Predictions based on item attributes or metadata.
 
 
-**List of GPU's Availability:** (A100 for Model Training, Total Run time: 200 Hours)
 
-![image](https://github.com/user-attachments/assets/c19f0af2-17d4-49af-82e0-31900cb9ac12)
 
 
 **References:**
@@ -755,7 +687,23 @@ SEO (Search Engine Optimization) and SEM techniques may also be merged, along wi
 ----------------------------------------
 
 
+Other Supporting Information:
 
+**Scope** For Recommendation Engines In Various Sectors:
+1. Energy Sectors, (Energy Saving Programs, Substations, CO2 Emission, Solar, Grid Automation, Sensor Meters, Smart Buildings, Smart Cities, Electrical Products and HVAC transmission)
+2. Banking and Fintech sectors, (Wealth Management, Customized Credit Products, Investment Portfolio's, Equities, and Insurance plan recommendations)
+3. Technology and Service sectors, (Ecommerce Products)
+4. Entertainment and Gamification, (Custom Localization and Immersive Experience)
+5. Food, Beverages & Agriculture Industry (AI-based recommendations for improved crop yield, agricultural products, custom fertilizers, supply and demand forecasting, as well as weather and climate change insights using satellite data.)
+6. Healthcare and Pharmaceutical, 
+7. Aviation and Transportation, and 
+8. Other Specialized Sectors. 
+
+
+
+**List of GPU's Availability:** (A100 for Model Training, Total Run time: 200 Hours)
+
+![image](https://github.com/user-attachments/assets/c19f0af2-17d4-49af-82e0-31900cb9ac12)
 
 
 
