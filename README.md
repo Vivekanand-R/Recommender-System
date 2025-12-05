@@ -300,49 +300,6 @@ In the cross-model similarity study, BERT4Rec ↔ SASRec showed a cosine structu
 In contrast, BERT4Rec ↔ xLSTM (0.010, 0.030) and SASRec ↔ xLSTM (0.008, 0.030) revealed minimal structural similarity. The xLSTM embedding space is organized very differently — it doesn’t rely on global movie similarity but rather captures temporal and sequential dependencies. Thus, xLSTM represents movies based on their order and recency in user histories, not just shared context, which explains its distinct geometry despite strong recall performance.
 
 
-**Datasets:**
-
-1. Amazon Software data usually refers to the large-scale Amazon Product Review datasets (reviews, ratings, timestamps, and product metadata) widely used for recommender system research. They capture user–item interactions across millions of products and enable benchmarking of collaborative and content-based recommendation models.
-
-		https://cseweb.ucsd.edu/~jmcauley/datasets/amazon_v2/
-		
-		Software	reviews (459,436 reviews)	metadata (26,815 products)
-
-2. MUSIK4all is a massive music interaction dataset (≈228M events, 119,140 users, TSV File) containing user–track play counts and timestamps. It is designed for music recommender systems, supporting temporal modeling, user history analysis, and large-scale evaluation.
-
-Before Filter:
-
-		Total rows: 252984396
-		Unique users: 119140
-		Unique tracks: 56512
-		Time span: 1970-01-01 01:00:36 → 2020-03-20 12:59:51
-		Avg. interactions per user: 2123.42
-		Min / Max interactions per user: 1 / 243384
-
-Data Sampling (Filters): 
-
-		A. Filter users <5 events,
-		B. cap max 1000 events per user,
-		C. hash-select ~5% of users,
-		D. output to Parquet (~10M rows).
-
-After Sampling Filter:
-
-		total_rows:	2533266
-		unique_users:	4584
-		unique_tracks: 	51291
-		min_timestamp:	2/22/2005 22:45
-		max_timestamp: 	3/20/2020 12:59
-		avg_interactions_per_user: 	552.6
-		min_interactions_per_user: 	5
-		max_interactions_per_user:	1000
-
-
-Sample Datasets:
-
-<img width="376" height="336" alt="image" src="https://github.com/user-attachments/assets/2e3729b9-4e6e-47f5-a3a0-640985cb6a4b" />
-
-
 **Data Sampling Techniques:**
 				
 				A. Random Sampling → Select a fraction p of rows uniformly (e.g., USING SAMPLE 1% in DuckDB); fast but may fragment user timelines.
@@ -357,9 +314,6 @@ Sample Datasets:
 
 **Data Sources:** Here, we will be leveraging RecBole libraries to explore various models and to develop more customizable one. 
 
-List of Different Varieties of Datasets: (Ref: https://recbole.io/)
-
-![image](https://github.com/user-attachments/assets/e842adf0-6eaa-48b7-9ffa-68312db0788e)
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
@@ -413,11 +367,9 @@ Precision: How many relevant items recommended//Total No. of items **recommended
 
 **Normalized Discounted Combined Gain (NDGC):** For Ranking.
 
-**Epochs:** How many times we process our complete data until we reach final/optimum goal. 
 
-**Learning rate:**, How fast did we adjust our weights to reach that optimum level.
+**Cold Start Problem** :
 
-**Cold Start Problem** (For new users when we don't have data, 192 users): 
 Some of the commonly used approaches were:
 1. Clustering Approach,
 2. Profile Based (Meta Data) Approach,
@@ -425,12 +377,6 @@ Some of the commonly used approaches were:
 4. Novalty or Randomness Approach
 
 
-**Feature Focus:**
-
-A. User-level features (e.g., user age, gender, occupation)
-B. Item-level features (e.g., genres, title metadata)
-C. Time or position embeddings beyond fixed positional indices
-D. Temporal dynamics (e.g., timestamp-based recency)
 
 **Performance Optimization:**
 
@@ -548,10 +494,12 @@ xLSTM:
 
 
 **To accelarate GPU Training Process:**
-**1. AMP (Automatic Mixed Precision)**: It's a feature in PyTorch that enables training using a mix of:
-		float16 (FP16) — faster, uses less memory
-		float32 (FP32) — for stable parts of the model
 
+**1. AMP (Automatic Mixed Precision)**: It's a feature in PyTorch that enables training using a mix of:
+
+		float16 (FP16) — faster, uses less memory
+		
+		float32 (FP32) — for stable parts of the model
 
 
 **Training Objective + Optimizer + Scheduler Breakdown at a glance**
@@ -692,11 +640,11 @@ Other Supporting Information:
 **Scope** For Recommendation Engines In Various Sectors:
 1. Energy Sectors, (Energy Saving Programs, Substations, CO2 Emission, Solar, Grid Automation, Sensor Meters, Smart Buildings, Smart Cities, Electrical Products and HVAC transmission)
 2. Banking and Fintech sectors, (Wealth Management, Customized Credit Products, Investment Portfolio's, Equities, and Insurance plan recommendations)
-3. Technology and Service sectors, (Ecommerce Products)
+3. Technology and Service sectors, (Ecommerce, products, content, or services, boosting engagement and customer satisfaction.)
 4. Entertainment and Gamification, (Custom Localization and Immersive Experience)
-5. Food, Beverages & Agriculture Industry (AI-based recommendations for improved crop yield, agricultural products, custom fertilizers, supply and demand forecasting, as well as weather and climate change insights using satellite data.)
-6. Healthcare and Pharmaceutical, 
-7. Aviation and Transportation, and 
+5. Beverages & Agriculture Industry (AI-based recommendations for improved crop yield, agricultural products, custom fertilizers, supply and demand forecasting, as well as weather and climate change insights using satellite data.)
+6. Healthcare and Pharmaceutical, (drug targets, clinical trial candidates, and molecule designs)
+7. Aviation and Transportation, and  (Test Procedure Recommendations (Wind Tunnel, Engine Testing), Component & Subsystem Design Recommendations, Recommended temperature/pressure cycles for composites curing, Predictive Maintenance Recommendation, Supply chain and OEM Stocks recommendations)
 8. Other Specialized Sectors. 
 
 
