@@ -591,7 +591,6 @@ Knowledge-Based Recommendation:- Utilizes external knowledge graphs to add seman
 
 ----------------------------------------
 
-
 Other Supporting Information:
 
 **Scope** For Recommendation Engines In Various Sectors:
@@ -599,11 +598,8 @@ Other Supporting Information:
 2. **Healthcare and Pharmaceutical**, (drug targets, clinical trial candidates, and molecule designs)
 3. **Aerospace and Transportation**, (Test Procedure Recommendations Wind Tunnel, Engine Testing, Component & Subsystem Design Recommendations, Recommended temperature/pressure cycles for composites curing, Predictive Maintenance Recommendation, Supply chain and OEM Stocks recommendations)
 4. Banking and Fintech sectors, (Wealth Management, Customized Credit Products, Investment Portfolio's, Equities, and Insurance plan recommendations)
-5. Technology and Service sectors, (Ecommerce, products, content, or services, boosting engagement and customer satisfaction.)
-6. Entertainment and Gamification, (Custom Localization and Immersive Experience)
-7. Beverages & Agriculture Industry (AI-based recommendations for improved crop yield, agricultural products, custom fertilizers, supply and demand forecasting, as well as weather and climate change insights using satellite data.)
-8. Other Specialized Sectors. 
-
+5. Technology and Service sectors, (Ecommerce, products, content, or services, boosting engagement and customer satisfaction.) and
+6. Other Specialized Sectors. 
 
 **List of GPU's Availability:** (For Model Training)
 
