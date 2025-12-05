@@ -381,7 +381,7 @@ xLSTM:
 	• Alternative:
 		○ "training": Activates regularization components like dropout.
 	• When to use: Set to "inference" during evaluation or production deployment.
-	Recommended: Use "training" when fitting the model. Use "inference" during evaluation or deployment.
+	Recommended: Use "training" when fitting the model. Use "inference" during evaluation or deployments.
 	
 7. chunkwise_kernel="chunkwise--triton_xl_chunk"
 	• What it does: Specifies the backend kernel used for chunk-based sequence processing in the xLSTM.
@@ -540,10 +540,10 @@ Knowledge-Based Recommendation:- Utilizes external knowledge graphs to add seman
 
 Other Supporting Information:
 
-**Scope** For Recommendation Engines In Various Sectors:
-1. **Energy Sectors**, (Energy Saving Programs, Substations, CO2 Emission, Solar, Grid Automation, Sensor Meters, Smart Buildings, Smart Cities, Electrical Products and HVAC transmission)
-2. **Healthcare and Pharmaceutical**, (drug targets, clinical trial candidates, and molecule designs)
-3. **Aerospace and Transportation**, (Test Procedure Recommendations Wind Tunnel, Engine Testing, Component & Subsystem Design Recommendations, Recommended temperature/pressure cycles for composites curing, Predictive Maintenance Recommendation, Supply chain and OEM Stocks recommendations)
+**Scope** For General Recommendation Algorithm's In Various Sectors:-
+1. **Energy Sectors**, (Energy Saving Programs, Substations, CO2 Emission, Solar, Grid Automation, Sensor Meters, Generators, Turbines, Smart Buildings, Smart Cities, Electrical Products and HVAC transmission)
+2. **Healthcare and Pharmaceutical**, (Reconstruction kernels, AI post-processing algorithms, Preset Selection, clinical workflows, operational, diagnostic, device-focused, Imaging Modality, Multi-Model Protocol Recommendations, drug targets, clinical trial candidates, and molecule designs)
+3. **Aerospace and Transportation**, (Test Procedure Recommendations Wind Tunnel, Engine Testing, Component & Subsystem Design Recommendations, Recommended temperature/pressure cycles for composites curing, Predictive Maintenance Recommendation, Quality, PQ Testing, Supply Chain and OEM Stocks recommendations)
 4. Banking and Fintech sectors, (Wealth Management, Customized Credit Products, Investment Portfolio's, Equities, and Insurance plan recommendations)
 5. Technology and Service sectors, (Ecommerce, products, content, or services, boosting engagement and customer satisfaction.) and Other Specialized Sectors. 
 
