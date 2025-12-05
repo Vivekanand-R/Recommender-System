@@ -22,33 +22,11 @@ The primary objective is to evaluate the effectiveness of the xLSTM model across
 
 <img width="1013" height="767" alt="image" src="https://github.com/user-attachments/assets/ad9043b6-06a0-4398-8754-796d0f5e2b94" />
 
-This script trains a sequential recommender system on a **user-specified/customizable MovieLens dataset** (100K, 1M, 10M, or 20M).
-
-It preprocesses the data, maps user/item IDs, and splits interactions with train/validation/test sequences.
-
-Users can select among **four AI models: standard LSTM, xLSTM, BERT4REC, SAS4REC** variant with configurable parameters.
-
-The selected model is trained using PyTorch with evaluation metrics like Recall@10, MRR, Hit Rate and NDCG.
-
-After training, the best model is used to predict and display top-10 movie recommendations based on user history.
+This script trains a sequential recommender system on a **user-specified/customizable MovieLens dataset** (100K, 1M, 10M, or 20M). It preprocesses the data, maps user/item IDs, and splits interactions with train/validation/test sequences. Users can select among **four AI models: standard LSTM, xLSTM, BERT4REC, SAS4REC** variant with configurable parameters. The selected model is trained using PyTorch with evaluation metrics like Recall@10, MRR, Hit Rate and NDCG. After training, the best model is used to predict and display top-10 movie recommendations based on user history.
 
 **Training script that integrates:**
 
-A. Dynamic dataset selection (100K, 1M, 10M, 20M)
-
-B. Multiple model choices (LSTM, xLSTM, BERT4Rec, SASRec)
-
-C. Dataset-specific hyperparameters (xlstm_params, dataloader_params)
-
-D. TensorBoard logging
-
-E. GPU monitoring
-
-F. Evaluation metrics (Recall@10, MRR, NDCG)
-
-G. Early stopping + best model saving
-
-H. Easy-readable prediction logging with movie titles
+A. Dynamic dataset selection (100K, 1M, 10M, 20M) | B. Multiple model choices (LSTM, xLSTM, BERT4Rec, SASRec) | C. Dataset-specific hyperparameters (xlstm_params, dataloader_params)  |  D. TensorBoard logging  |  E. GPU monitoring  |  F. Evaluation metrics (Recall@10, MRR, NDCG)  | G. Early stopping + best model saving  | H. Easy-readable prediction logging with movie titles
 
 
 **Initial Setup Requirements**
@@ -97,7 +75,6 @@ A. Install Necessary Packages (in quite mode) | B. Triton Activation For GPU Acc
 **Model Results:**
 
 <img width="757" height="638" alt="image" src="https://github.com/user-attachments/assets/9aa5c873-d542-41c1-a20a-3ae71b1dac1d" />
-
 
 <img width="1116" height="736" alt="image" src="https://github.com/user-attachments/assets/3760389c-fe54-42c2-923b-3a2a6c28fd4f" />
 
@@ -572,8 +549,7 @@ Other Supporting Information:
 2. **Healthcare and Pharmaceutical**, (drug targets, clinical trial candidates, and molecule designs)
 3. **Aerospace and Transportation**, (Test Procedure Recommendations Wind Tunnel, Engine Testing, Component & Subsystem Design Recommendations, Recommended temperature/pressure cycles for composites curing, Predictive Maintenance Recommendation, Supply chain and OEM Stocks recommendations)
 4. Banking and Fintech sectors, (Wealth Management, Customized Credit Products, Investment Portfolio's, Equities, and Insurance plan recommendations)
-5. Technology and Service sectors, (Ecommerce, products, content, or services, boosting engagement and customer satisfaction.) and
-6. Other Specialized Sectors. 
+5. Technology and Service sectors, (Ecommerce, products, content, or services, boosting engagement and customer satisfaction.) and Other Specialized Sectors. 
 
 **List of GPU's Availability:** (For Model Training)
 
