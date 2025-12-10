@@ -403,9 +403,12 @@ xLSTM:
 
 9. step_kernel="triton"
 	• What it does: Kernel for token-by-token (autoregressive) prediction.
+
 	• Why: In online inference, the model predicts one step at a time. Efficient step kernels minimize latency and memory reuse overhead.
+
 	• Alternatives:
 		○ "torch": Simplified fallback, better suited for testing and interpretability.
+
 	• When to use: Triton in real-time systems or batch decoding tasks.
 
 
@@ -421,14 +424,19 @@ xLSTM:
 **Training Objective + Optimizer + Scheduler Breakdown at a glance**
 
 Step 1: criterion = nn.CrossEntropyLoss()
+
 	• What it does: Defines the loss function used to measure how well the model’s predictions match the ground truth.
+	
 	• Why: CrossEntropyLoss is mathematically equivalent to maximizing the log-likelihood of the true class (movie index) in a multi-class classification setting. It's standard for categorical prediction tasks where only one true label exists.
+	
 	• How it works:
 		○ Applies log(softmax(logits)) internally.
 		○ Penalizes the model if the predicted probability for the true label is low.
+		
 	• Alternatives:
 		○ nn.NLLLoss: Use with explicit log_softmax output.
 		○ FocalLoss: For class-imbalance-sensitive training.
+		
 	• Recommended for MovieLens:
 		○ MovieLens 100K → CrossEntropyLoss (default, reliable).
 		○ MovieLens 1M / 20M → Still effective. Consider FocalLoss if popularity imbalance is extreme.
@@ -540,12 +548,11 @@ Knowledge-Based Recommendation:- Utilizes external knowledge graphs to add seman
 
 Other Supporting Information:
 
-**Scope** For General Recommendation Algorithm's In Various Sectors:-
-1. **Energy Sectors**, (Energy Saving Programs, Substations, CO2 Emission, Solar, Grid Automation, Sensor Meters, Generators, Turbines, Smart Buildings, Smart Cities, Electrical Products and HVAC transmission)
-2. **Healthcare and Pharmaceutical**, (Reconstruction kernels, AI post-processing algorithms, Preset Selection, clinical workflows, operational, diagnostic, device-focused, Imaging Modality, Multi-Model Protocol Recommendations, drug targets, clinical trial candidates, and molecule designs)
-3. **Aerospace and Transportation**, (Test Procedure Recommendations Wind Tunnel, Engine Testing, Component & Subsystem Design Recommendations, Recommended temperature/pressure cycles for composites curing, Predictive Maintenance Recommendation, Quality, PQ Testing, Supply Chain and OEM Stocks recommendations)
-4. Banking and Fintech sectors, (Wealth Management, Customized Credit Products, Investment Portfolio's, Equities, and Insurance plan recommendations)
-5. Technology and Service sectors, (Ecommerce, products, content, or services, boosting engagement and customer satisfaction.) and Other Specialized Sectors. 
+**Scope** For General Recommendation Algorithm's (Transformers, other Sequencial and Hybrid Models) In Various Sectors:-
+1. **Energy Sectors**, (Energy Saving Programs, Substations, CO2 Emission, Solar, Grid Automation, Sensor Meters, Generators, Turbines, Smart Buildings, Electrical Products and HVAC transmission) - Energy Efficient
+2. **Healthcare and Pharmaceutical**, (Optimal CT/MRI scan protocol, Improved diagnostic quality, Predicting component failures, Suggesting calibration adjustments, Recommend likely report templates, Reduced Waiting Time, Reconstruction kernels, AI post-processing algorithms, clinical workflows, operational, diagnostic, decentralized, Multi-Model Protocol Recommendations, drug targets, clinical trial, and molecule designs) - Ethical, Fairness, Compliance and Explanaibility
+3. **Aerospace and Transportation**, (Test Procedure Recommendations Wind Tunnel, Engine Testing, Component & Subsystem Design Recommendations, Recommended temperature/pressure cycles for composites curing, Predictive Maintenance Recommendation, Quality, PQ Testing, Supply Chain and OEM Stocks recommendations) - Safety, Costs, Sustainable and Ecofriendly
+4. **Technology, Banking and Fintech sectors**, (Ecommerce, products, content, services, boosting engagement, outlier detection, detect/alert cyber threads, and customer satisfaction.) and Other Specialized Sectors.  - Governance and Technology
 
 **List of GPU's Availability:** (For Model Training)
 
