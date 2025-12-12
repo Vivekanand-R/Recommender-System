@@ -457,16 +457,20 @@ Step 2: optimizer = optim.Adam(model.parameters(), lr=0.001)
 		○ MovieLens 20M → AdamW(lr=1e-4) or scheduled warm-up
 
 Step 3: scheduler = StepLR(optimizer, step_size=5, gamma=0.5)
+
 	• What it does: Decays the learning rate every 5 epochs by multiplying it by 0.5.
-	• Why: Learning rate scheduling helps escape local minima early and encourages fine-tuning as training progresses. Reducing LR gradually allows stable convergence.
+	• Why: Learning rate scheduling helps escape local minima early and encourages fine-tuning as training progresses. Reducing LR gradually allows stable convergence
+
 	• How it works:
 		○ Epochs 1–5: LR = 0.001
 		○ Epochs 6–10: LR = 0.0005
 		○ ... continues halving every step_size
+
 	• Alternatives:
 		○ CosineAnnealingLR: Smoothly decays LR to a minimum.
 		○ ReduceLROnPlateau: Adaptive decay based on validation loss.
 		○ OneCycleLR: Aggressive LR scheduling, good for fast convergence.
+
 	• Recommended:
 		○ MovieLens 100K → StepLR(step_size=5, gamma=0.5) 
 		○ MovieLens 1M → ReduceLROnPlateau(patience=3) or CosineAnnealing
@@ -552,7 +556,7 @@ Other Supporting Information:
 1. **Energy Sectors**, (Energy Saving Programs, Substations, CO2 Emission, Solar, Grid Automation, Sensor Meters, Generators, Turbines, Smart Buildings, Electrical Products and HVAC transmission) - Energy Efficient
 2. **Healthcare and Pharmaceutical**, (Optimal CT/MRI scan protocol, Improved diagnostic quality, Predicting component failures, Suggesting calibration adjustments, Recommend likely report templates, Reduced Waiting Time, Reconstruction kernels, AI post-processing algorithms, clinical workflows, operational, diagnostic, decentralized, Multi-Model Protocol Recommendations, drug targets, clinical trial, and molecule designs) - Ethical, Fairness, Compliance and Explanaibility
 3. **Aerospace and Transportation**, (Test Procedure Recommendations Wind Tunnel, Engine Testing, Component & Subsystem Design Recommendations, Recommended temperature/pressure cycles for composites curing, Predictive Maintenance Recommendation, Quality, PQ Testing, Supply Chain and OEM Stocks recommendations) - Safety, Costs, Sustainable and Ecofriendly
-4. **Technology, Banking and Fintech sectors**, (Ecommerce, products, content, services, boosting engagement, outlier detection, detect alert cyber espionage/threads, and customer satisfaction.) and Other Specialized Sectors.  - Privacy, Governance, Secure, Modern Technology
+4. **Technology, Banking and Fintech sectors**, (Ecommerce, products, content, services, boosting engagement, outlier/anomaly detection.) and Other Specialized Sectors.  - Privacy, Governance, Secure, Modern Technology
 
 **List of GPU's Availability:** (For Model Training)
 
