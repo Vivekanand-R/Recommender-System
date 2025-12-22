@@ -79,6 +79,10 @@ A. Install Necessary Packages (in quite mode) | B. Triton Activation For GPU Acc
 <img width="1116" height="736" alt="image" src="https://github.com/user-attachments/assets/3760389c-fe54-42c2-923b-3a2a6c28fd4f" />
 
 
+------------------------------------
+
+------------------------------------
+
 **Overall Research Findings:**
 
 RQ1 — Performance Scaling Across Dataset Sizes:  xLSTM demonstrates a clear positive scaling trend. While performance on the smallest dataset (ML 100K) drags the Transformer models, xLSTM significantly improves as the interaction histories emerge. On MovieLens 10M, xLSTM reaches Recall@10 values around 31.8 percent, converging closely with BERT4Rec, indicating that its gating mechanisms and the enhanced memory structures leverage medium scale datasets effectively. 
@@ -92,6 +96,9 @@ RQ4 — Embedding Utilization, Saturation, and Representational Diversity: Embed
 Overall, xLSTM demonstrates strong scaling behavior (RQ1), clear sensitivity to sequence length and embedding size (RQ2), meaningful efficiency‑accuracy trade-offs (RQ3), and superior embedding utilization compared to Transformer (RQ4). 
 
 
+------------------------------------
+
+------------------------------------
 
 **Comprehensive Embedding Geometry Analysis for Sequential Recommenders:**
 
@@ -104,43 +111,12 @@ Overall, xLSTM demonstrates strong scaling behavior (RQ1), clear sensitivity to 
 
 
 
-{
-  "BERT4Rec": {
-    "vocab_size": 10678,
-    "embedding_dim": 256,
-    "num_items": 10677,
-    "key": "bert.embeddings.word_embeddings.weight"
-  },
-  "SASRec": {
-    "vocab_size": 10678,
-    "embedding_dim": 256,
-    "num_items": 10677,
-    "key": "item_embedding.weight"
-  },
-  "xLSTM": {
-    "vocab_size": 10678,
-    "embedding_dim": 256,
-    "num_items": 10677,
-    "key": "embedding.weight"
-  }
-}
+Figure illustrates the distribution of L2 norms of learned item embeddings across models. BERT4Rec exhibits tightly concentrated, low-magnitude embeddings due to extensive normalization layers inherent to transformer architectures. SASRec displays moderate embedding norms, reflecting a balance between magnitude and attention-based representation. In contrast, xLSTM embeddings exhibit substantially larger norms, indicating that the recurrent memory-based architecture relies more heavily on embedding magnitude to preserve and propagate item-specific information through gating mechanisms. This highlights fundamental architectural differences in how sequential signals are encoded.
 
-=== Intrinsic Dim / Anisotropy ===
-BERT4Rec:  ID≈181.97 | mean cos=0.0154 (±0.0760)
-SASRec:  ID≈204.45 | mean cos=0.0167 (±0.0720)
-xLSTM:  ID≈249.88 | mean cos=0.0004 (±0.0625)
-
-=== Hubness (k=10) ===
-BERT4Rec: Gini=0.357  max=147  mean=10.00  std=7.56
-SASRec: Gini=0.353  max=158  mean=10.00  std=7.82
-xLSTM: Gini=0.179  max=24  mean=10.00  std=3.20
-
-=== Cross-Model Similarity ===
-BERT4Rec vs SASRec:  Jaccard@10=0.095  Jaccard@50=0.105  CosStructCorr=0.469  CKA=0.413  ProcErr=0.881
-BERT4Rec vs xLSTM:  Jaccard@10=0.001  Jaccard@50=0.004  CosStructCorr=0.008  CKA=0.030  ProcErr=0.990
-SASRec vs xLSTM:  Jaccard@10=0.001  Jaccard@50=0.003  CosStructCorr=0.006  CKA=0.029  ProcErr=1.018
+Although the three models have comparable parameter counts, their learned embedding magnitudes differ substantially due to architectural design. BERT4Rec employs extensive Layer Normalization and attention-based mixing, resulting in low-magnitude, direction-focused embeddings. SASRec exhibits moderate embedding norms due to reduced normalization. In contrast, xLSTM relies on gated recurrent memory mechanisms, where embedding magnitude plays a critical role in preserving information over time, leading to higher L2 norms. These differences reflect architectural inductive biases rather than parameter scale
 
 
+Other Findings:-
 
 		A. Embedding Spectrum Analysis 
 		B. Variance Distribution & Intrinsic Dimension Study 
@@ -244,23 +220,9 @@ In the cross-model similarity study, BERT4Rec ↔ SASRec showed a cosine structu
 
 In contrast, BERT4Rec ↔ xLSTM (0.010, 0.030) and SASRec ↔ xLSTM (0.008, 0.030) revealed minimal structural similarity. The xLSTM embedding space is organized very differently — it doesn’t rely on global movie similarity but rather captures temporal and sequential dependencies. Thus, xLSTM represents movies based on their order and recency in user histories, not just shared context, which explains its distinct geometry despite strong recall performance.
 
+------------------------------------
 
-**Data Sampling Techniques:**
-				
-				A. Random Sampling → Select a fraction p of rows uniformly (e.g., USING SAMPLE 1% in DuckDB); fast but may fragment user timelines.
-				B. Stratified Sampling → Sample proportionally within groups (e.g., per user/item category); implemented with groupby + sample() in Pandas/Polars.
-				C. Systematic Sampling → Pick every k-th record after a random offset; efficient for ordered files but risky if patterns exist.
-				D. Time-based Sampling → Filter interactions by a timestamp window (e.g., WHERE ts >= NOW() - INTERVAL '90 days'); preserves temporal recency.
-				E. User-based Hash Sampling → Deterministic subset of users via hash (e.g., hash(user_id) % 100 = 0); keeps complete histories of selected users.
-				F. Per-user Last-K Sampling → Take last K events per user using window functions (ROW_NUMBER() OVER (PARTITION BY user ORDER BY ts DESC)); reduces data but preserves recency.
-				G. Storage formats → For scale, write sampled subsets to Parquet/ZSTD (columnar, compressed) for fast reloads vs. raw TSV/CSV.
-				H. Best practice → Use hash or last-K sampling for recommender research, time-based for evaluation splits, and combine with Parquet for speed.
-
-
-**Data Sources:** Here, we will be leveraging RecBole libraries to explore various models and to develop more customizable one. 
-
-
--------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------
 
 **Model 1: Bert4Rec** Datasets: MovieLENS, Music4All, Amazon Software
 
@@ -312,7 +274,9 @@ A. Implement Leave-One-Out Splitting, B. Integrate Negative Sampling.
 
 **Probability:** Derived from logit score after applying softmax function (always between 0 to 1), probability is calculated across all the Items in the list, so it might seem to be less, distributed across all of them. 
 
---------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------
+
+------------------------------------
 
 Model 2: xLSTM (Datasets: MovieLENS100-K, MovieLENS1M, MovieLENS20M, Music4All Datasets, Amazon Software Datasets)
 
@@ -328,167 +292,16 @@ xLSTM:
 ![image](https://github.com/user-attachments/assets/d442320b-f9a9-414a-87e6-e46a3f920e94)
 
 
-**Model Architecture Hyperparameters at a glance:** (xLSTMLargeConfig — Advanced Configuration with Theoretical Justifications)
 
-1. embedding_dim=128
-	• What it does: Specifies the dimensionality of learned vector representations for discrete input tokens (e.g., movie IDs).
-	• Why: A higher embedding dimension increases representational capacity, enabling the model to capture more latent semantic features. The embedding layer projects sparse one-hot input vectors into a continuous, dense space where semantic similarity correlates with vector proximity.
-	• Common alternatives:
-		○ 64: Lower capacity, faster convergence.
-		○ 256/512: Useful in large item vocabularies to prevent underfitting.
-	• When to use: Scale with dataset complexity. Use 128–256 for medium-size datasets with rich item metadata.
-	Recommended: MovieLens 100K → 64 or 128, MovieLens 1M → 128 or 256, MovieLens 20M → 256 or 512
-	
-
-2. num_heads=2
-	• What it does: Defines the number of parallel attention heads in multi-head attention modules within the xLSTM blocks.
-	• Why: Multi-head attention decomposes the representation space into subspaces, allowing the model to attend to information from multiple perspectives simultaneously. This increases its ability to capture heterogeneous temporal dependencies.
-	• Common alternatives:
-		○ 1: Deactivates multi-head decomposition, reducing model complexity.
-		○ 4/8: Enables modeling finer-grained patterns across modalities or positional contexts.
-	• When to use: Increase when sequences are long or contain multiple intertwined dependencies (e.g., genre + recency + popularity).
-	Recommended: MovieLens 100K → 1 or 2, MovieLens 1M → 2 or 4, MovieLens 20M → 4 or 8
-	
-
-3. num_blocks=2
-	• What it does: Sets the number of stacked xLSTM layers.
-	• Why: Deeper architectures allow hierarchical learning where lower layers capture local dependencies and higher layers model abstract, long-range patterns. This improves generalization and capacity to capture complex sequence dynamics.
-	• Common alternatives:
-		○ 1: Suitable for shallow tasks or small data regimes.
-		○ 3+: Improves abstraction, suitable for deep sequence modeling like session-based or hierarchical recommendation.
-	• When to use: Start with 2. Increase depth if the model underfits or fails to capture long-term user behavior trends.
-	Recommended: MovieLens 100K → 1 or 2, MovieLens 1M → 2 or 3,  MovieLens 20M → 3 or 4
-	
-
-4. vocab_size=num_items + 1
-	• What it does: Defines the size of the input vocabulary (items) including padding.
-	• Why: Essential for allocating the correct size of embedding and output matrices. The +1 accounts for a sentinel token (e.g., <PAD>), critical for batching variable-length sequences.
-	• When to use: Always match to dataset; padding index typically uses ID 0.
-	
-
-5. return_last_states=True
-	• What it does: Returns only the final hidden state from each sequence.
-	• Why: In next-item prediction, only the final timestep matters — intermediate states are irrelevant. Returning only the last state reduces memory and computational overhead during inference.
-	• Alternative:
-		○ False: Needed for token-level tasks or for attention over the whole sequence in downstream layers.
-	• When to use: True for sequence-to-one settings; False for sequence-to-sequence or explainability requirements.
-	Recommended: All MovieLens versions → True
-	
-
-6. mode="inference"
-	• What it does: Controls the internal operation flags — disables dropout, gradient tracking, etc.
-	• Why: Reduces unnecessary stochasticity and overhead during evaluation. Ensures deterministic behavior, important for reproducibility and deployment.
-	• Alternative:
-		○ "training": Activates regularization components like dropout.
-	• When to use: Set to "inference" during evaluation or production deployment.
-	Recommended: Use "training" when fitting the model. Use "inference" during evaluation or deployments.
-	
-7. chunkwise_kernel="chunkwise--triton_xl_chunk"
-	• What it does: Specifies the backend kernel used for chunk-based sequence processing in the xLSTM.
-	• Why: Chunking enables parallelism over sub-segments of the sequence, reducing latency and memory usage while preserving local context. Triton provides a high-performance, GPU-optimized kernel for this.
-	• Alternatives:
-		○ "chunkwise--native": CPU-friendly but slower and less parallelized.
-	• When to use: Always prefer Triton if targeting GPU execution and high throughput.
-	• All MovieLens versions → "chunkwise--triton_xl_chunk"
-	
-
-8. sequence_kernel="native_sequence__triton"
-	• What it does: Determines the kernel used for processing full sequences end-to-end.
-	• Why: In sequence modeling, kernel efficiency dictates overall throughput. Triton kernels can fuse operations and minimize memory transfers on GPUs.
-	• Alternatives:
-		○ "native_sequence__torch": More debuggable but less performant.
-	• When to use: Triton for production/research; Torch for debugging and CPU contexts.
-	• All MovieLens versions → "native_sequence__triton"
-	
-
-9. step_kernel="triton"
-	• What it does: Kernel for token-by-token (autoregressive) prediction.
-
-	• Why: In online inference, the model predicts one step at a time. Efficient step kernels minimize latency and memory reuse overhead.
-
-	• Alternatives:
-		○ "torch": Simplified fallback, better suited for testing and interpretability.
-
-	• When to use: Triton in real-time systems or batch decoding tasks.
-
-
-**To accelarate GPU Training Process:**
-
-**1. AMP (Automatic Mixed Precision)**: It's a feature in PyTorch that enables training using a mix of:
-
-		float16 (FP16) — faster, uses less memory
-		
-		float32 (FP32) — for stable parts of the model
-
-
-**Training Objective + Optimizer + Scheduler Breakdown at a glance**
-
-Step 1: criterion = nn.CrossEntropyLoss()
-
-	• What it does: Defines the loss function used to measure how well the model’s predictions match the ground truth.
-	
-	• Why: CrossEntropyLoss is mathematically equivalent to maximizing the log-likelihood of the true class (movie index) in a multi-class classification setting. It's standard for categorical prediction tasks where only one true label exists.
-	
-	• How it works:
-		○ Applies log(softmax(logits)) internally.
-		○ Penalizes the model if the predicted probability for the true label is low.
-		
-	• Alternatives:
-		○ nn.NLLLoss: Use with explicit log_softmax output.
-		○ FocalLoss: For class-imbalance-sensitive training.
-		
-	• Recommended for MovieLens:
-		○ MovieLens 100K → CrossEntropyLoss (default, reliable).
-		○ MovieLens 1M / 20M → Still effective. Consider FocalLoss if popularity imbalance is extreme.
-
-Step 2: optimizer = optim.Adam(model.parameters(), lr=0.001)
-	• What it does: Specifies the optimizer that updates model weights based on computed gradients.
-	• Why: Adam (Adaptive Moment Estimation) uses first- and second-order moments to adjust the learning rate per parameter. It converges faster and more stably than SGD in many cases.
-	• How it works:
-		○ Tracks moving averages of gradients and squared gradients.
-		○ Adapts learning rate per parameter dynamically.
-	• Alternatives:
-		○ SGD: Simpler, requires more tuning.
-		○ AdamW: Weight-decay decoupled Adam, more robust for regularization.
-		○ RMSProp: Useful in recurrent networks, though less common now.
-	• Recommended:
-		○ MovieLens 100K → Adam(lr=1e-3)
-		○ MovieLens 1M → AdamW(lr=3e-4)
-		○ MovieLens 20M → AdamW(lr=1e-4) or scheduled warm-up
-
-Step 3: scheduler = StepLR(optimizer, step_size=5, gamma=0.5)
-
-	• What it does: Decays the learning rate every 5 epochs by multiplying it by 0.5.
-	• Why: Learning rate scheduling helps escape local minima early and encourages fine-tuning as training progresses. Reducing LR gradually allows stable convergence
-
-	• How it works:
-		○ Epochs 1–5: LR = 0.001
-		○ Epochs 6–10: LR = 0.0005
-		○ ... continues halving every step_size
-
-	• Alternatives:
-		○ CosineAnnealingLR: Smoothly decays LR to a minimum.
-		○ ReduceLROnPlateau: Adaptive decay based on validation loss.
-		○ OneCycleLR: Aggressive LR scheduling, good for fast convergence.
-
-	• Recommended:
-		○ MovieLens 100K → StepLR(step_size=5, gamma=0.5) 
-		○ MovieLens 1M → ReduceLROnPlateau(patience=3) or CosineAnnealing
-		○ MovieLens 20M → OneCycleLR for faster training with controlled generalization
-
-Step 4: recall_list, mrr_list, ndcg_list = [], [], []
-	• What it does: Initializes lists to store evaluation metrics per epoch for validation and test sets..
-	• Why: Tracking Recall@K, MRR@K, and NDCG@K helps monitor ranking quality and ensure model performance is improving.
-	• How it works:
-		○ After each epoch, predictions are collected.
-		○ Top-k metrics are computed and stored.
-	• Alternatives:
-		○ Store in a dict or log with wandb, TensorBoard, etc.
 
 Section 3: Evaluation Results and Predictions for MovieLENS10M:
 
 <img width="1275" height="317" alt="image" src="https://github.com/user-attachments/assets/fc9064dc-3a23-4def-9026-bb60d411be3b" />
 
+
+------------------------------------
+
+------------------------------------
 
 **Popularity bias:**
 
@@ -496,7 +309,26 @@ Section 3: Evaluation Results and Predictions for MovieLENS10M:
 
 <img width="734" height="228" alt="image" src="https://github.com/user-attachments/assets/2465b706-bf99-44aa-b8ae-b4a69f2881a6" />
 
------------------------------------------------------------------------------------------------
+
+------------------------------------
+
+------------------------------------
+
+
+**GPU Scaling:-**
+
+We benchmarked GPU inference-time scaling of sequential recommender architectures—BERT4Rec (bidirectional Transformer), SASRec (causal Transformer), and xLSTM (chunkwise recurrent model)—under identical embedding dimension (256), depth (4 blocks), vocabulary, and next-item prediction heads. Models were run in evaluation mode with inference-only forward passes, measuring per-batch latency and throughput as a function of sequence length L at fixed batch size B=32. Sequence lengths were increased up to L=1536, aligned to xLSTM’s 64-token chunk constraint, with GPU synchronization to ensure accurate timing. Transformers exhibit increasing activation and attention costs with L, while xLSTM amortizes recurrence via chunkwise parallel kernels, yielding near-linear memory growth. Observed latency curves were fit on log–log axes to estimate an effective scaling exponent α, capturing empirical runtime growth. BERT4Rec shows α≈0.98, indicating near-linear scaling in this regime due to efficient GPU attention kernels at moderate L. SASRec exhibits α≈1.26, reflecting superlinear growth from causal masking and less efficient attention execution. xLSTM achieves α≈0.64, demonstrating sublinear effective scaling dominated by fixed kernel overhead at small L and efficient chunkwise recurrence at large L. Although xLSTM has higher constant latency at short sequences, its flatter growth enables convergence toward Transformer latency at long L. Overall, results empirically confirm the quadratic sensitivity of attention-based models to sequence length and the long-context efficiency advantage of chunked recurrent architectures during inference.
+
+<img width="668" height="461" alt="image" src="https://github.com/user-attachments/assets/071bfd77-13db-420e-abce-11ad82db62ff" />
+
+
+We have evaluated the inference-time scaling using lightweight proxy implementations of BERT4Rec, SASRec, and xLSTM on GPU, all configured with 256-dimensional embeddings, 4 blocks, and a shared vocabulary of 10,678 items. Pretrained .pt checkpoints were used to initialize item embeddings (and full weights for xLSTM), while the benchmarked architectures and forward passes were defined explicitly in the script. Inference was performed with GPU synchronization to obtain accurate latency measurements. Sequence lengths were swept from 64 to 1536 (aligned to xLSTM’s 64-token chunking constraint) at a fixed batch size of 32. Latency, throughput, and log–log scaling exponents were computed to characterize how inference cost grows with sequence length.
+
+
+------------------------------------
+
+------------------------------------
+
 
 **General Classification of Recommender Systems:**
 
@@ -548,8 +380,9 @@ Knowledge-Based Recommendation:- Utilizes external knowledge graphs to add seman
 
 [19] Lost in Sequence: Do Large Language Models Understand Sequential Recommendation?: https://arxiv.org/pdf/2502.13909
 
-----------------------------------------
+------------------------------------
 
+------------------------------------
 Other Supporting Information:
 
 **Scope** For General Recommendation Algorithm's (Transformers, other Sequencial and Hybrid Models) In Various Sectors:-
@@ -558,9 +391,18 @@ Other Supporting Information:
 3. **Aerospace and Transportation**, (Test Procedure Recommendations Wind Tunnel, Engine Testing, Component & Subsystem Design Recommendations, Recommended temperature/pressure cycles for composites curing, Predictive Maintenance Recommendation, Quality, PQ Testing, Supply Chain and OEM Stocks recommendations) - Safety, Costs, Sustainable and Ecofriendly
 4. **Technology, Banking and Fintech sectors**, (Ecommerce, products, content, services, boosting engagement, outlier/anomaly detection.) and Other Specialized Sectors.  - Privacy, Governance, Secure, Modern Technology
 
+------------------------------------
+
+------------------------------------
+
 **List of GPU's Availability:** (For Model Training)
 
 ![image](https://github.com/user-attachments/assets/c19f0af2-17d4-49af-82e0-31900cb9ac12)
+
+
+------------------------------------
+
+------------------------------------
 
 
 
