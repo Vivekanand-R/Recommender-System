@@ -198,12 +198,6 @@ This geometric diversity allows xLSTM to model temporal order and recency more e
 
 **B. Cosine structure correlation and CKA similarity:**
 
-BERT4Rec vs SASRec | Corr=0.471 | CKA=0.427
-
-BERT4Rec vs xLSTM | Corr=0.010 | CKA=0.030
-
-SASRec vs xLSTM | Corr=0.008 | CKA=0.030
-
 <img width="497" height="392" alt="image" src="https://github.com/user-attachments/assets/0cbea92a-720e-422d-98a1-126859451a66" />
 
 <img width="1160" height="451" alt="image" src="https://github.com/user-attachments/assets/9f306212-39f4-440f-96b1-a4a634f6dbae" />
