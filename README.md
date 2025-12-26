@@ -220,19 +220,6 @@ In contrast, BERT4Rec ↔ xLSTM (0.010, 0.030) and SASRec ↔ xLSTM (0.008, 0.03
 
 Popularity Bias in recommender systems is a systematic tendency to over-recommend already popular items, while under-recommending less popular (long-tail or niche) items, regardless of whether those niche items might better match a user’s true preferences.
 
-In many recommendation engines (movies, music, shopping, news):
-
-Items with many interactions (views, clicks, purchases, ratings)
-→ get recommended more often
-
-Items with few interactions
-→ get less exposure, even if they’re highly relevant to certain users
-
-<img width="1008" height="740" alt="image" src="https://github.com/user-attachments/assets/b3a1867b-0364-4ef4-b14f-e85d48dc22e0" />
-
-
-Metrics:-
-
 <img width="796" height="550" alt="image" src="https://github.com/user-attachments/assets/7b485c09-559c-42d2-aa8a-877763082e49" />
 
 <img width="734" height="228" alt="image" src="https://github.com/user-attachments/assets/2465b706-bf99-44aa-b8ae-b4a69f2881a6" />
