@@ -224,86 +224,22 @@ In contrast, BERT4Rec ↔ xLSTM (0.010, 0.030) and SASRec ↔ xLSTM (0.008, 0.03
 
 ------------------------------------
 
-**Model 1: Bert4Rec** Datasets: MovieLENS, Music4All, Amazon Software
-
-**Model Architecture:**
-1. The model is a modified version of BERT (Bidirectional Encoder Representations from Transformers).
-2. It encodes the input sequence using multiple transformer layers:
-      A. Each movie ID is converted into embedding vectors.
-      B. Self-attention mechanism understands contextual relationships between movies.
-      C. Outputs a dense layer that predicts probabilities for all possible movies.
-
-**Making Predictions:**
-During inference:
-    The last few movies a user watched are fed into the model.
-    The model predicts the most likely next movie (or multiple next movies).
-Example:
-    Input (last watched movies): [101, 102, 103]
-    Output (predictions): 104 (Movie D), 105 (Movie E), 106 (Movie F)
-    This means the model suggests that Movie D, E, or F are likely to be watched next.
-
-**Generating Top-K Recommendations:**
-After training, the model can generate recommendations for a given user:
-Takes user’s past watched sequence.
-Masks the last movie (or predicts the next).
-The model outputs probabilities for all movies.
-Top-K movies with the highest probability are recommended.
-
-**Evaluation Metrics:** To evaluate the model accuracy Recall 5, 10, Precision, NDCG will be used. 
-
-Recall = How many relevant items recommended/Total No. of relevant items **available** (measures the relevance. )
-
-Precision: How many relevant items recommended//Total No. of items **recommended** (measures the accuracy.)
-
-Normalized Discounted Combined Gain (NDGC): For Ranking Quality [DGC/IDGC].
-
-
-**Cold Start Problem** :
-
-Some of the commonly used approaches were:
-1. Clustering Approach,
-2. Profile Based (Meta Data) Approach,
-3. Hierarchical approach, and
-4. Novalty or Randomness Approach
-
-**Performance Optimization:**
-
-A. Implement Leave-One-Out Splitting, B. Integrate Negative Sampling.
-
-**Logit Score:** Direct Score, before applying any activation funtions, non bounded ( can be larger and can go larger negative values). Higher the logit score, better the prediction is.
-
-**Probability:** Derived from logit score after applying softmax function (always between 0 to 1), probability is calculated across all the Items in the list, so it might seem to be less, distributed across all of them. 
-
-------------------------------------
-
-------------------------------------
-
-Model 2: xLSTM (Datasets: MovieLENS100-K, MovieLENS1M, MovieLENS20M, Music4All Datasets, Amazon Software Datasets)
-
-Section 1: Model Parameters:
-
-![image](https://github.com/user-attachments/assets/6b456f6f-c137-4782-a333-6a76fd5b0d58)
-
-
-**Model Architecture:** 
-
-xLSTM:
-
-![image](https://github.com/user-attachments/assets/d442320b-f9a9-414a-87e6-e46a3f920e94)
-
-
-
-
-Section 3: Evaluation Results and Predictions for MovieLENS10M:
-
-<img width="1275" height="317" alt="image" src="https://github.com/user-attachments/assets/fc9064dc-3a23-4def-9026-bb60d411be3b" />
-
-
-------------------------------------
-
-------------------------------------
-
 **Popularity bias:**
+
+Popularity Bias in recommender systems is a systematic tendency to over-recommend already popular items, while under-recommending less popular (long-tail or niche) items, regardless of whether those niche items might better match a user’s true preferences.
+
+In many recommendation engines (movies, music, shopping, news):
+
+Items with many interactions (views, clicks, purchases, ratings)
+→ get recommended more often
+
+Items with few interactions
+→ get less exposure, even if they’re highly relevant to certain users
+
+<img width="1008" height="740" alt="image" src="https://github.com/user-attachments/assets/b3a1867b-0364-4ef4-b14f-e85d48dc22e0" />
+
+
+Metrics:-
 
 <img width="796" height="550" alt="image" src="https://github.com/user-attachments/assets/7b485c09-559c-42d2-aa8a-877763082e49" />
 
