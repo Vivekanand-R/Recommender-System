@@ -291,7 +291,8 @@ Knowledge-Based Recommendation:- Utilizes external knowledge graphs to add seman
 
 ------------------------------------
 
-**License:-** This project uses the MovieLens and other datasets provided by GroupLens Research. Licensed under CC BY 4.0. 
+**License:-** This project uses the MovieLens and other datasets provided by GroupLens Research. Licensed under CC BY 4.0 and other sources. 
+
 
 ------------------------------------
 
