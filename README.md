@@ -291,14 +291,7 @@ Knowledge-Based Recommendation:- Utilizes external knowledge graphs to add seman
 
 ------------------------------------
 
-------------------------------------
-Other Supporting Information:
-
-**Scope** For General Recommendation Algorithm's (Transformers, other Sequencial and Hybrid Models) In Various Sectors:-
-1. **Energy Sectors**, (Energy Saving Programs, Substations, CO2 Emission, Solar, Grid Automation, Sensor Meters, Generators, Turbines, Smart Buildings, Electrical Products and HVAC transmission) - Energy Efficient
-2. **Healthcare and Pharmaceutical**, (Optimal CT/MRI scan protocol, Improved diagnostic quality, Predicting component failures, Suggesting calibration adjustments, Recommend likely report templates, Reduced Waiting Time, Reconstruction kernels, AI post-processing algorithms, clinical workflows, operational, diagnostic, decentralized, Multi-Model Protocol Recommendations, drug targets, clinical trial, and molecule designs) - Ethical, Fairness, Compliance and Explanaibility
-3. **Aerospace and Transportation**, (Test Procedure Recommendations Wind Tunnel, Engine Testing, Component & Subsystem Design Recommendations, Recommended temperature/pressure cycles for composites curing, Predictive Maintenance Recommendation, Quality, PQ Testing, Supply Chain and OEM Stocks recommendations) - Safety, Costs, Sustainable and Ecofriendly
-4. **Technology, Banking and Fintech sectors**, (Ecommerce, products, content, services, boosting engagement, outlier/anomaly detection.) and Other Specialized Sectors.  - Privacy, Governance, Secure, Modern Technology
+**License:-** This project uses the MovieLens and other datasets provided by GroupLens Research. Licensed under CC BY 4.0. 
 
 ------------------------------------
 
