@@ -188,8 +188,6 @@ Overall, Transformers (BERT4Rec, SASRec) learn narrow, popularity-biased manifol
 The Anisotropy Index (AI) measures how uniformly embeddings are distributed in space — it’s the mean cosine similarity between random pairs of vectors.
 A low AI (≈0) means embeddings are evenly spread (isotropic), while a high AI (>0.05) means they point in similar directions (anisotropic), indicating reduced geometric diversity.
 
-<img width="848" height="600" alt="image" src="https://github.com/user-attachments/assets/12fd0c69-fc86-4d50-81e4-2198fbbcf89d" />
-
 BERT4Rec (AI = 0.0163) and SASRec (AI = 0.0164) show mild anisotropy — their movie embeddings tend to align toward a common direction, meaning popular movies cluster together in the same region.
 In contrast, xLSTM (AI = 0.00035) produces an almost perfectly isotropic space, where movie vectors are well-spread and orthogonal.
 Thus, xLSTM captures sequence-dependent uniqueness, representing each film (e.g., The Matrix, Titanic, Toy Story) in distinct, uncorrelated directions rather than emphasizing overall popularity.
