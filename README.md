@@ -294,17 +294,6 @@ Knowledge-Based Recommendation:- Utilizes external knowledge graphs to add seman
 
 ------------------------------------
 
-------------------------------------
-
-**List of GPU's Availability:** (For Model Training)
-
-![image](https://github.com/user-attachments/assets/c19f0af2-17d4-49af-82e0-31900cb9ac12)
-
-
-------------------------------------
-
-------------------------------------
-
 
 
 
